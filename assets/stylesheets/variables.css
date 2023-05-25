@@ -1,0 +1,346 @@
+/* Fonts */
+@font-face {
+    font-family: "Inter-Regular";
+    src: url('/assets/fonts/Inter-VariableFont_slnt\,wght.ttf');
+}
+
+@font-face {
+    font-family: "Urbanist-Variable";
+    src: url("/assets/fonts/Urbanist[wght].ttf");
+}
+
+/* Light Mode Variables */
+:root {
+
+    /* Edit the below variables to customize the frontend pages! */
+
+    /* ----- Global styles ----- */
+    --global-font-family: 'Inter-Regular', sans-serif;
+    --header-background-color: #262626;
+    --body-foreground-color: #000000;
+    --body-background-color: #F5F5F5;
+    --link-color: #3f51b5;
+    --link-hover-color: #1b234e;
+    --fader-background-color: #262626;
+
+    /* Top Navigation Buttons */
+    --nav-button-font-family: 'Inter-Regular', sans-serif;
+    --nav-button-foreground-color: #999999;
+    --nav-button-hover-foreground-color: white;
+    --nav-button-click-foreground-color: white;
+
+    /* Event Selector Dropdown */
+    --event-dropdown-font-family: 'Inter-Regular', sans-serif;
+    --event-dropdown-foreground-color: black;
+    --event-dropdown-background-color: white;
+    --event-dropdown-hover-foreground-color: black;
+    --event-dropdown-hover-background-color: #f2f2f2;
+    --event-dropdown-click-foreground-color: black;
+    --event-dropdown-click-background-color: #f2f2f2;
+    --event-dropdown-border-color: #696969;
+    --event-dropdown-border-radius: 5px;
+
+    /* Top Navigation Donate Button */
+    --nav-donate-button-font-family: 'Inter-Regular', sans-serif;
+    --nav-donate-button-foreground-color: white;
+    --nav-donate-button-background-color: #4268F6;
+    --nav-donate-button-hover-foreground-color: white;
+    --nav-donate-button-hover-background-color: #535B8E;
+    --nav-donate-button-click-foreground-color: white;
+    --nav-donate-button-click-background-color: #535B8E;
+
+    /* Page Header */
+    --page-header-font-family: 'Urbanist-Variable', sans-serif;
+    --page-header-foreground-color: #3f51b5;
+    --page-header-font-weight: 900;
+
+    /* ----- Info Pages ----- */
+
+    /* Donation Stats */
+    --donation-stats-font-family: 'Inter-Regular', sans-serif;
+    --donation-stats-foreground-color: black;
+
+    /* Timezone Text */
+    --timezone-text-font-family: 'Inter-Regular', sans-serif;
+    --timezone-text-foreground-color: #595959;
+
+    /* Table Header */
+    --table-header-foreground-color: black;
+    --table-header-background-color: #f5f5f5;
+    --table-header-font-family: 'Inter-Regular', sans-serif;
+
+    /* Table Rows */
+    --table-row-font-family: 'Inter-Regular', sans-serif;
+    --table-row-border-color: #dddddd;
+    --table-row-border-thickness: 2px;
+    --table-row-odd-foreground-color: black;
+    --table-row-even-foreground-folor: black;
+    --table-row-odd-background-color: #f5f5f5;
+    --table-row-even-background-color: #ebebeb;
+    --table-row-hover-foreground-color: black;
+    --table-row-hover-background-color: #cfcfcf;
+    --table-row-click-foreground-color: black;
+    --table-row-click-background-color: #cfcfcf;
+
+    /* Table Date Rows */
+    --table-date-row-background-color: #dddddd;
+    --table-date-row-foreground-color: black;
+    --table-date-row-font-family: 'Urbanist-Variable', sans-serif;
+    --table-date-row-font-weight: 900;
+
+    /* Table Option Button */
+    --table-option-button-font-family: 'Inter-Regular', sans-serif;
+    --table-option-button-foreground-color: white;
+    --table-option-button-background-color: #4268F6;
+    --table-option-button-hover-foreground-color: white;
+    --table-option-button-hover-background-color: #585b90;
+    --table-option-button-click-foreground-color: white;
+    --table-option-button-click-background-color: #585b90;
+
+    /* Sub Table Rows */
+    --sub-table-row-background-color: #f5f5f5;
+    --sub-table-row-odd-foreground-color: black;
+    --sub-table-row-even-foreground-folor: black;
+    --sub-table-row-odd-background-color: #f5f5f5;
+    --sub-table-row-even-background-color: #ebebeb;
+    --sub-table-row-hover-foreground-color: black;
+    --sub-table-row-hover-background-color: #cfcfcf;
+    --sub-table-row-click-foreground-color: black;
+    --sub-table-row-click-background-color: #cfcfcf;
+
+    /* Pagination */
+    --pagination-font-family: 'Inter-Regular', sans-serif;
+    --pagination-font-color: #595959;
+    --pagination-button-foreground-color: white;
+    --pagination-button-background-color: #4268F6;
+    --pagination-button-hover-foreground-color: white;
+    --pagination-button-hover-background-color: #585b90;
+    --pagination-button-click-foreground-color: white;
+    --pagination-button-click-background-color: #585b90;
+
+    /* ----- Message Page Styles ----- */
+    --message-header-font-family: 'Urbanist-Variable', sans-serif;
+    --message-header-font-color: #4268F6;
+
+    --message-content-font-family: 'Inter-Regular', sans-serif;
+    --message-content-font-color: black;
+
+    /* ----- Donation Page Styles ----- */
+
+    /* General */
+    --charity-subtext-font-family: 'Inter-Regular', sans-serif;
+    --charity-subtext-font-color: black;
+    
+    --input-label-text-color: black;
+    --input-subtext-text-color: #595959;
+    --input-error-text-color: red;
+    --input-label-font-family: 'Inter-Regular', sans-serif;
+    --input-subtext-font-family: 'Inter-Regular', sans-serif;
+    --input-error-font-family: 'Inter-Regular', sans-serif;
+
+    /* Text Inputs */
+    --input-font-family: 'Inter-Regular', sans-serif;
+    --input-foreground-color: black;
+    --input-background-color: white;
+    --input-border-color: rgb(192, 192, 202);
+    --input-border-radius: 5px;
+    --input-border-thickness: 1px;
+    --input-hover-foreground-color: black;
+    --input-hover-background-color: white;
+    --input-hover-border-color: rgb(68, 107, 246);
+    --input-focus-foreground-color: black;
+    --input-focus-background-color: white;
+    --input-focus-border-color: rgb(68, 107, 246);
+
+    /* Incentive General */
+    --incentive-font-family: 'Inter-Regular', sans-serif;
+
+    /* Add Incentive Button */
+    --incentive-add-button-foreground-color: black;
+    --incentive-add-button-background-color: white;
+    --incentive-add-button-border-color: black;
+    --incentive-add-button-border-radius: 5px;
+    --incentive-add-button-border-thickness: 1px;
+    --incentive-add-button-hover-foreground-color: black;
+    --incentive-add-button-hover-background-color: #f2f2f2;
+    --incentive-add-button-hover-border-color: black;
+
+    /* Incentive Select Container */
+    --incentive-container-border-color: black;
+    --incentive-container-border-radius: 10px;
+    --incentive-container-border-thickness: 1px;
+
+    /* Incentive List Window */
+    --incentive-list-background-color: white;
+    --incentive-list-border-color: rgb(192, 192, 202);
+    --incentive-list-border-thickness: 1px;
+    --incentive-list-hover-background-color: #f2f2f2;
+    --incentive-list-selected-background-color: #d9d9d9;
+
+    --incentive-list-game-font-family: 'Urbanist-Variable', sans-serif;
+    --incentive-list-game-color: black;
+    --incentive-list-hover-game-color: black;
+    --incentive-list-selected-game-color: black;
+
+    --incentive-list-name-font-family: 'Inter-Regular', sans-serif;
+    --incentive-list-name-color: black;
+    --incentive-list-hover-name-color: black;
+    --incentive-list-selected-name-color: black;
+
+    /* Incentive Details Window */
+    --incentive-details-foreground-color: black;
+    --incentive-details-background-color: #f2f2f2;
+    --incentive-details-font-family: 'Inter-Regular', sans-serif;
+
+    --incentive-details-game-font-family: 'Urbanist-Variable', sans-serif;
+    --incentive-details-game-color: black;
+
+    --incentive-details-name-color: black;
+
+    --incentive-details-progress-foreground-color: blue;
+    --incentive-details-progress-background-color: white;
+    --incentive-details-progress-border-color: rgb(192, 192, 202);
+    --incentive-details-progress-border-radius: 5px;
+    --incentive-details-progress-border-width: 1px;
+    --incentive-details-progress-height: 8px;
+
+    --incentive-details-input-font-family: 'Inter-Regular', sans-serif;
+    --incentive-details-input-foreground-color: black;
+    --incentive-details-input-background-color: white;
+    --incentive-details-input-border-color: rgb(192, 192, 202);
+    --incentive-details-input-border-radius: 5px;
+    --incentive-details-input-border-thickness: 1px;
+    --incentive-details-input-hover-foreground-color: black;
+    --incentive-details-input-hover-background-color: white;
+    --incentive-details-input-hover-border-color: rgb(68, 107, 246);
+    --incentive-details-input-focus-foreground-color: black;
+    --incentive-details-input-focus-background-color: white;
+    --incentive-details-input-focus-border-color: rgb(68, 107, 246);
+
+    --incentive-details-option-hover-background-color: #d9d9d9;
+    --incentive-details-option-selected-background-color: #d9d9d9;
+
+    /* Incentive confirm button */
+    --incentive-confirm-button-foreground-color: white;
+    --incentive-confirm-button-background-color: black;
+    --incentive-confirm-button-border-color: black;
+    --incentive-confirm-button-border-radius: 5px;
+    --incentive-confirm-button-border-thickness: 1px;
+    --incentive-confirm-button-hover-foreground-color: white;
+    --incentive-confirm-button-hover-background-color: #404040;
+    --incentive-confirm-button-hover-border-color: #404040;
+
+    /* Selected Incentives List */
+    --incentive-selected-font-family: 'Inter-Regular', sans-serif;
+    --incentive-selected-foreground-color: black;
+    --incentive-selected-background-color: white;
+    --incentive-selected-border-color: rgb(192, 192, 202);
+    --incentive-selected-border-thickness: 1px;
+
+    --incentive-selected-game-font-family: 'Urbanist-Variable', sans-serif;
+    --incentive-selected-game-color: black;
+
+    --incentive-selected-name-font-family: 'Inter-Regular', sans-serif;
+    --incentive-selected-name-color: black;
+
+    --incentive-selected-button-foreground-color: white;
+    --incentive-selected-button-background-color: black;
+    --incentive-selected-button-border-color: black;
+    --incentive-selected-button-border-radius: 5px;
+    --incentive-selected-button-border-thickness: 1px;
+    --incentive-selected-button-hover-foreground-color: white;
+    --incentive-selected-button-hover-background-color: #404040;
+    --incentive-selected-button-hover-border-color: #404040;
+
+    /* Prize List Container */
+    --prize-list-foreground-color: black;
+    --prize-list-background-color: white;
+    --prize-list-border-radius: 10px;
+    --prize-list-border-color: black;
+    --prize-list-border-thickness: 1px;
+
+    /* Prize List Items */
+    --prize-list-item-background-color: white;
+    --prize-list-item-border-color: rgb(192, 192, 202);
+    --prize-list-item-border-thickness: 1px;
+
+    --prize-list-item-name-font-family: 'Urbanist-Variable', sans-serif;
+    --prize-list-item-name-color: black;
+
+    --prize-list-item-donation-font-family: 'Inter-Regular', sans-serif;
+    --prize-list-item-donation-color: black;
+
+    --prize-list-item-hover-background-color: #f2f2f2;
+
+    /* Prize Info Container */
+    --prize-popup-shadow-color: black;
+    
+    --prize-popup-font-family: 'Inter-Regular', sans-serif;
+    --prize-popup-background-color: #f5f5f5;
+    --prize-popup-foreground-color: black;
+
+    --prize-popup-name-font-family: 'Urbanist-Variable', sans-serif;
+    --prize-popup-name-color: #3f51b5;
+
+    --prize-popup-button-foreground-color: white;
+    --prize-popup-button-background-color: black;
+    --prize-popup-button-border-color: black;
+    --prize-popup-button-border-radius: 5px;
+    --prize-popup-button-border-thickness: 1px;
+    --prize-popup-button-hover-foreground-color: white;
+    --prize-popup-button-hover-background-color: #404040;
+    --prize-popup-button-hover-border-color: #404040;
+
+    /* Donate Button */
+    --error-text-font-family: 'Inter-Regular', sans-serif;
+    --error-text-color: red;
+
+    --donate-button-font-family: 'Inter-Regular', sans-serif;
+    --donate-button-foreground-color: white;
+    --donate-button-background-color: black;
+    --donate-button-border-color: black;
+    --donate-button-border-radius: 5px;
+    --donate-button-border-thickness: 1px;
+    --donate-button-hover-foreground: white;
+    --donate-button-hover-background: #404040;
+    --donate-button-hover-border-color: #404040;
+}
+
+/* Dark Mode Variables */
+[data-theme="dark"] {
+
+    /* ----- Global styles ----- */
+    --global-font-family: 'Inter-Regular', sans-serif;
+    --header-background-color: #262626;
+    --body-foreground-color: #F5F5F5;
+    --body-background-color: #000000;
+    --link-color: #00aeef;
+    --link-hover-color: #0076a3;
+
+    /* Top Navigation Buttons */
+    --nav-button-font-family: 'Inter-Regular', sans-serif;
+    --nav-button-foreground-color: #999999;
+    --nav-button-hover-foreground-color: white;
+    --nav-button-click-foreground-color: white;
+
+    /* Event Selector Dropdown */
+    --event-dropdown-font-family: 'Inter-Regular', sans-serif;
+    --event-dropdown-foreground-color: black;
+    --event-dropdown-background-color: white;
+    --event-dropdown-separator-color: rgb(192, 192, 202);
+    --event-dropdown-hover-foreground-color: black;
+    --event-dropdown-hover-background-color: #f2f2f2;
+    --event-dropdown-click-foreground-color: black;
+    --event-dropdown-click-background-color: #f2f2f2;
+    --event-dropdown-border-color: #696969;
+    --event-dropdown-border-radius: 5px;
+
+    /* Top Navigation Donate Button */
+    --nav-donate-button-font-family: 'Inter-Regular', sans-serif;
+    --nav-donate-button-foreground-color: white;
+    --nav-donate-button-background-color: #4268F6;
+    --nav-donate-button-hover-foreground-color: white;
+    --nav-donate-button-hover-background-color: #535B8E;
+    --nav-donate-button-click-foreground-color: white;
+    --nav-donate-button-click-background-color: #535B8E;
+}

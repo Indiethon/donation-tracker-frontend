@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <base href="/">
+  <title>Indiethon</title>
+  <link rel="icon" type="image/png" href="assets/logos/favicon.ico" />
+  <script src="assets/scripts//public/index.js"></script>
+  <script src="assets/scripts/public/utils.js"></script>
+  <link rel="stylesheet" href="/assets/stylesheets/normalize.css" />
+  <link rel="stylesheet" href="/assets/stylesheets/variables.css" />
+  <link rel="stylesheet" href="/assets/stylesheets/stylesheet.css" />
+  <link href="/assets/fonts/fontawesome/css/fontawesome.css" rel="stylesheet">
+  <link href="/assets/fonts/fontawesome/css/brands.css" rel="stylesheet">
+  <link href="/assets/fonts/fontawesome/css/solid.css" rel="stylesheet">
+  <meta name="title" content="Indiethon" />
+  <meta name="description"
+    content="Indiethon Donation Tracker is the place to find stats and donate to Indiethon events. View runs, incentives, prizes, donations and more with the tracker!" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JXS6XLF42E"></script>
+<!-- <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+
+  gtag('config', 'G-JXS6XLF42E');
+</script> -->
+
+<body>
+  <div class="fader visible">
+    <div class="spinnerDiv">
+      <svg class="circular">
+        <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="5" stroke-miterlimit="10" />
+      </svg>
+    </div>
+  </div>
+  <header>
+    <div class="navbar-container">
+      <div class="navbar-logo">
+        <a href="/"><img class="logo" src="/assets/logos/logo.png" alt="Tracker Logo"></a>
+      </div>
+      <input type="checkbox" id="navbar-toggle" class="navbar-toggle">
+      <label for="navbar-toggle" class="navbar-toggle-label">
+        <div class="navbar-icon-container">
+          <div class="navbar-toggle-icon"></div>
+        </div>
+      </label>
+      <div class="navbar-page-shadow" onClick="document.querySelector('#navbar-toggle').checked = false"></div>
+      <nav class="navbar">
+        <ul class="navbar-menu menu-left">
+          <li><a href="/" data-link><i class="fa-regular fa-house-chimney"></i> Home</a>
+          <li><a href="/runs" data-link><i class="fa-regular fa-stopwatch"></i> Runs</a>
+          <li><a href="/incentives" data-link><i class="fa-solid fa-chart-line"></i> Incentives</a>
+          <li><a href="/prizes" data-link><i class="fa-solid fa-gift"></i> Prizes</a>
+          <li><a href="/donations" data-link><i class="fa-solid fa-hand-holding-heart"></i> Donations</a>
+        </ul>
+        <ul class="navbar-menu menu-right">
+          <li class="navbar-dropdown">
+            <a></i><span class="dropdown-event-text">All Events</span><span class="navbar-caret"></span></a></a>
+            <ul class="navbar-dropdown-menu" id="event-dropdown-menu">
+            </ul>
+          </li>
+          <li class="donate-button-container"><a href="/donate" data-link>
+              <div class="donate-button"><i class="fa-solid fa-dollar-sign"></i> Donate</div>
+            </a></li>
+
+          <!-- Temporary dark mode switch -->
+          <li>
+            <div class="theme-switch-wrapper">
+              <label class="theme-switch" for="checkbox">
+                <input type="checkbox" id="checkbox" />
+                <div class="slider round"></div>
+              </label>
+              <em>Enable Dark Mode!</em>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <div class="page-container">
+    <main>
+
+    </main>
+    <footer>
+      <div class="footer-logo">
+        <img src="/assets/logos/logo.png" alt="Tracker Logo" />
+      </div>
+      <div class="links">
+        <a href="/" data-link>Home</a>
+        <a href="/donate" data-link>Donate</a>
+        <a class="website-link" href="" target="_blank">Website</a>
+        <a class="privacy-policy-link" href="" target="_blank">Privacy Policy</a>
+        <a class="sweepstakes-rules-link" href="" target="_blank">Sweepstakes Rules</a>
+        <a class="sweepstakes-rules-link" href="https://github.com/indiethon/donation-tracker" target="_blank">GitHub</a>
+      </div>
+      <div class="copyright">
+        &copy; <span class="copyright-date"></span> <span class="copyright-company"></span> All rights reserved.
+      </div>
+    </footer>
+  </div>
+</body>
+
+</html>

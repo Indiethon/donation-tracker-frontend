@@ -1,0 +1,148 @@
+<header>
+    <h1>Donate</h1>
+</header>
+
+<section class="charity-subtext-section">
+    <div class="charity-subtext">100% of your donation goes to support <span class="charity-subtext-charity"></span>.
+    </div>
+</section>
+
+<section class="donate-form">
+    <form>
+        <div class="input-div alias">
+            <label class="label">Alias</label>
+            <input class="input" type="input" maxlength="32" property="alias" onInput="updateInputCount(this)">
+            <div class="input-count">
+                <span class="input-count-current">0</span>/32
+            </div>
+            <div class="input-subtext"> Leave blank to donate anonymously.</div>
+            <div class="error-text">Alias is invalid.</div>
+        </div>
+        <div class="input-div email-address">
+            <label class="label">Email Address</label>
+            <input class="input" type="input" maxlength="160" property="email-address" onInput="updateInputCount(this)"
+                onfocusout="checkStatus(this)">
+            <div class="input-count">
+                <span class="input-count-current">0</span>/160
+            </div>
+            <div class="input-subtext"> Our privacy policy can be found <a class="privacy-policy-link link"
+                    target="_blank">here</a>.</div>
+            <div class="error-text">Email address is invalid.</div>
+        </div>
+        <div class="input-div amount">
+            <label class="label">Amount</label>
+            <input class="input" type="number" min="0" step="0.01" property="amount" onInput="updateInputCount(this)"
+                onfocusout="checkStatus(this)">
+            <div class="currency-symbol"></div>
+            <div class="input-subtext"> Minimum donation is <span class="minimum-donation-text"></span></div>
+            <div class="error-text"> Amount is below the minimum donation.</div>
+        </div>
+        <div class="input-div comment">
+            <label class="label">Comment</label>
+            <textarea class="input" type="textarea" maxlength="5000" property="comment"
+                onInput="updateInputCount(this)"></textarea>
+            <div class="input-count">
+                <span class="input-count-current">0</span>/5000
+            </div>
+            <div class="input-subtext"> Please refrain from using inapporpiate and offensive words. All donation
+                comments are screened before being displayed.</div>
+        </div>
+        <div class="custom">
+
+        </div>
+
+        <div class="incentives-div">
+            <h2>Incentives</h2>
+            <div class="incentive-label-text">Donations can be used to influence certain runs in the schedule! See glitch exebitions, make a runner's life harder, suggest a funny filename and even add additonal games to the schedule!</div>
+            <div class="selected-incentives"></div>
+            <button type="button" class="add-incentive" onClick="showIncentiveMenu(this)" disabled>Add
+                Incentives</button>
+            <div class="incentive-list-div hidden">
+                <div class="incentive-list"></div>
+                <div class="incentive-details-div hidden">
+                    <div class="incentive-details-game"></div>
+                    <div class="incentive-details-name"></div>
+                    <div class="incentive-details-description"></div>
+                    <div class="incentive-details-total">
+                        <div class="incentive-total-progress">
+                            <div class="incentive-total-progress-bar"></div>
+                        </div>
+                        <div class="incentive-total-text"></div>
+                    </div>
+                    <div class="input-div incentive-amount">
+                        <label class="label">Amount to put towards incentive</label>
+                        <input class="input" type="number" min="0" step="0.01" property="incentive-amount"
+                            onfocusout="checkStatus(this)">
+                        <div class="currency-symbol"></div>
+                        <div class="input-subtext"> You have <b><span
+                                    class="incentive-amount-remaining-text"></span></b> remaining.</div>
+                    </div>
+                    <div class="incentive-options-container">
+                        <div class="incentive-options-div"></div>
+                        <div class="incentive-custom-option">
+                            <div class="incentive-option-checkbox-div custom-option"
+                                onClick="updateIncentiveCheckbox(this, true)" optionId="customOption">
+                                <div class="incentive-option-checkbox-div-left">
+                                    <input type="checkbox" class="incentive-option-checkbox">
+                                    <div class="incentive-option-checkbox-text">Nominate a new option!</div>
+                                </div>
+                                <div class="incentive-custom-option-input-container">
+                                    <input class="input" property="incentive-custom-option"
+                                        onfocusout="checkStatus(this)" onInput="updateInputCount(this)" disabled>
+                                    <div class="input-count">
+                                        <span class="input-count-current">0</span>/<span class="input-count-max"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" class="incentive-list-add-button" onClick="addIncentive()">Add</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="prizes-div">
+            <h2>Prizes</h2>
+            <div class="prize-container">
+                <div class="prize-text">
+                    <p>Donations can enter you to win prizes! By donating, you'll be automatically enteted in a drawing
+                        for
+                        the chance to win one of these amazing prizes! Click on a prize for more information.</p>
+                    <a class="sweepstakes-rules-link" target="_blank">Official Rules</a>
+                    <p>No donation necessary for a chance to win. See sweepstakes rules for details and instructions.
+                    </p>
+                </div>
+                <div class="prize-list">
+
+                </div>
+            </div>
+        </div>
+
+        <div class="donate-button-container">
+            <div class="warning-text"><span class="incentive-warning hidden">You haven't selected any incentives! To
+                    lock in your incentives, please click the 'Add' button in the incentives box.</span><span
+                    class="general-warning">There are issues with the donation form, please resolve them to
+                    donate!</span></div>
+            <button type="button" class="donate-button" onClick="donateForm()" disabled>Donate<span
+                    class="donate-button-amount"></span></button>
+            <div class="redirect-text">You will be redirected to PayPal to complete your transaction. If you are
+                encountering any issues donating, please contact us for assistance.</div>
+        </div>
+    </form>
+
+    <div class="prize-popup-container">
+        <div class="prize-popup-background" onClick="hidePrize()"></div>
+        <div class="prize-popup-div">
+            <div class="prize-popup-name"></div>
+            <img class="prize-popup-img" alt="Prize Image">
+            <div class="prize-popup-description"></div>
+            <div class="prize-popup-type"><b>Type: </b><span class="prize-popup-type-text"></span></div>
+            <div class="prize-popup-min-donation"><b>Minumum Donation: </b><span
+                    class="prize-popup-min-donation-text"></span></div>
+            <div class="prize-popup-value"><b>Value: </b><span class="prize-popup-value-text"></span></div>
+            <div class="prize-popup-contributor"><b>Contributor: </b><span class="prize-popup-contributor-text"></span>
+            </div>
+            <button type="button" class="prize-popup-close-button" onClick="hidePrize()">Close</button>
+        </div>
+    </div>
+</section>

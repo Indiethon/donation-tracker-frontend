@@ -1,0 +1,71 @@
+{
+    "name": "Indiethon Donation Tracker",
+    "apiUrl": "https://tracker.indiethon.com/api",
+    "website": "https://indiethon.com",
+    "privacyPolicy": "https://indiethon.com/privacy-policy",
+    "sweepstakesRules": "https://awake-promotion-0af.notion.site/Indiethon-Fall-Follies-2022-Sweepstakes-a9ef45e8301c421085e57fc7f7be2aae",
+    "copyrightCompany": "Indiethon Inc.",
+    "messages": {
+        "donationSuccess": "Thanks for donating! Enjoy the event!",
+        "donationError": "Your card was not charged. If you didn't cancel your transaction, try donating again, otherwise contact the event organizers for help.",
+        "databaseError": "There was an issue connecting to the tracker's back-end database. During non-event times, the database is turned off to save on computer resources. Please try again at a later time.<br><br>If you believe this is a mistake, please contact the site administrators."
+    },
+    "pages": [
+        {
+            "name": "Home",
+            "path": "",
+            "html": "home/home.html",
+            "stylesheet": "home/home.css",
+            "javascript": "home/home.js"
+        },
+        {
+            "name": "Runs",
+            "path": "/runs",
+            "html": "runs/runs.html",
+            "javascript": "runs/runs.js"
+        },
+        {
+            "name": "Incentives",
+            "path": "/incentives",
+            "html": "incentives/incentives.html",
+            "javascript": "incentives/incentives.js"
+        },
+        {
+            "name": "Prizes",
+            "path": "/prizes",
+            "html": "prizes/prizes.html",
+            "javascript": "prizes/prizes.js"
+        },
+        {
+            "name": "Donations",
+            "path": "/donations",
+            "html": "donations/donations.html",
+            "javascript": "donations/donations.js"
+        },
+        {
+            "name": "Donate",
+            "path": "/donate",
+            "html": "donate/donate.html",
+            "stylesheet": "donate/donate.css",
+            "javascript": "donate/donate.js"
+        },
+        {
+            "name": "Success",
+            "path": "/donate/success",
+            "html": "success/success.html",
+            "javascript": "success/success.js"
+        },
+        {
+            "name": "Error",
+            "path": "/donate/error",
+            "html": "error/error.html",
+            "javascript": "error/error.js"
+        },
+        {
+            "name": "Database Error",
+            "path": "/databaseError",
+            "html": "databaseError/databaseError.html",
+            "javascript": "databaseError/databaseError.js"
+        }
+    ]
+}
