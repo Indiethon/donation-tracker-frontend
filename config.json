@@ -1,6 +1,6 @@
 {
     "name": "Indiethon Donation Tracker",
-    "apiUrl": "https://tracker.indiethon.com/api",
+    "apiUrl": "https://api.tracker.indiethon.com",
     "website": "https://indiethon.com",
     "privacyPolicy": "https://indiethon.com/privacy-policy",
     "sweepstakesRules": "https://awake-promotion-0af.notion.site/Indiethon-Fall-Follies-2022-Sweepstakes-a9ef45e8301c421085e57fc7f7be2aae",
