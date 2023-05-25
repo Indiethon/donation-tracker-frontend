@@ -10,7 +10,7 @@
         "donationError": "Your card was not charged. If you didn't cancel your transaction, try donating again, otherwise contact the event organizers for help.",
         "databaseError": "There was an issue connecting to the tracker's back-end database. During non-event times, the database is turned off to save on computer resources. Please try again at a later time.<br><br>If you believe this is a mistake, please contact the site administrators."
     },
-    "pages": [
+    "publicPages": [
         {
             "name": "Home",
             "path": "",
@@ -66,6 +66,14 @@
             "path": "/databaseError",
             "html": "databaseError/databaseError.html",
             "javascript": "databaseError/databaseError.js"
+        }
+    ],
+    "adminPages": [
+        {
+            "name": "Login",
+            "path": "/login",
+            "html": "login/login.html",
+            "javascript": "login/login.js"
         }
     ]
 }

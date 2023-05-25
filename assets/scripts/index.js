@@ -87,6 +87,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     document.body.addEventListener("click", e => {
 
+        if (e.target.nodeName !== 'A') return;
+
         queryString = window.location.search;
         urlParams = new URLSearchParams(queryString);
 
