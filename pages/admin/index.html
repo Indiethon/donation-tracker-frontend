@@ -1,0 +1,123 @@
+<header class="page-header">
+    <div class="header-container left">
+        <input type="checkbox" id="navbar-toggle" class="navbar-toggle">
+        <label for="navbar-toggle" class="navbar-toggle-label">
+            <div class="navbar-icon-container">
+                <div class="navbar-toggle-icon"></div>
+            </div>
+        </label>
+        <div class="navbar-page-shadow" onClick="document.querySelector('#navbar-toggle').checked = false"></div>
+        <nav class="navbar">
+            <ul class="navbar-menu">
+                <div class="navbar-section-text">GENERAL</div>
+                <li class="navbar-dropdown">
+                    <a onClick="showDropdownMenu('admin-dropdown-menu', this)"><i class="fa-solid fa-toolbox"></i><span class="dropdown-event-text"> Administration</span><span
+                            class="navbar-caret"><i class="fa-solid fa-chevron-down"></i></span></a></a>
+                    <ul class="navbar-dropdown-menu" id="admin-dropdown-menu">
+                        <li><a href="/admin/dashboard/auditLogs" data-link>Audit Log</a>
+                        <li><a href="/admin/dashboard/users" data-link>Users</a>
+                        <li><a href="/admin/dashboard/groups" data-link>Groups</a>
+                    </ul>
+                </li>
+                <li class="navbar-dropdown">
+                    <a onClick="showDropdownMenu('tracker-dropdown-menu', this)"><i class="fa-solid fa-database"></i><span class="dropdown-event-text"> Tracker</span><span
+                            class="navbar-caret"><i class="fa-solid fa-chevron-down"></i></span></a></a>
+                    <ul class="navbar-dropdown-menu" id="tracker-dropdown-menu">
+                        <li><a href="/admin/dashboard/events" data-link>Events</a>
+                        <li><a href="/admin/dashboard/charities" data-link>Charities</a>
+                        <li><a href="/admin/dashboard/wordFilters" data-link>Word Filters</a>
+                    </ul>
+                </li>
+                <li class="navbar-dropdown">
+                    <a onClick="showDropdownMenu('people-dropdown-menu', this)"><i class="fa-solid fa-user-group"></i><span class="dropdown-event-text"> People</span><span
+                            class="navbar-caret"><i class="fa-solid fa-chevron-down"></i></span></a></a>
+                    <ul class="navbar-dropdown-menu" id="people-dropdown-menu">
+                        <li><a href="/admin/dashboard/runners" data-link>Runners</a>
+                        <li><a href="/admin/dashboard/donors" data-link>Donors</a>
+                    </ul>
+                </li>
+                <li class="navbar-dropdown">
+                    <a onClick="showDropdownMenu('prize-dropdown-menu', this)"><i class="fa-solid fa-trophy"></i><span class="dropdown-event-text"> Prizes</span><span
+                            class="navbar-caret"><i class="fa-solid fa-chevron-down"></i></span></a></a>
+                    <ul class="navbar-dropdown-menu" id="prize-dropdown-menu">
+                        <li><a href="/admin/dashboard/emailAddresses" data-link>Email Addresses</a>
+                        <li><a href="/admin/dashboard/emailTemplates" data-link>Email Templates</a>
+                        <li><a href="/admin/dashboard/drawPrizes" data-link>Draw Prizes</a>
+                        <li><a href="/admin/dashboard/sendPrizeEmails" data-link>Send Prize Emails</a>
+                    </ul>
+                </li>
+                <!-- <li class="donate-button-container"><a href="/donate" data-link>
+                        <div class="donate-button"><i class="fa-solid fa-dollar-sign"></i> Donate</div>
+                    </a></li> -->
+                <div class="navbar-section-text">EVENTS</div>
+                <div class="navbar-event-section">
+                </div>
+                <div class="navbar-section-text">SETTINGS</div>
+                <a class="page-color-mode-button" onClick="switchTheme()"><i class="fa-solid fa-circle-half-stroke"></i>&nbsp;Toggle Page Theme</a>
+                <a class="change-password-button" href="/admin/dashboard/changePassword" data-link><i class="fa-solid fa-pen"></i>&nbsp;Change Password</a>
+            </ul>
+        </nav>
+        <div class="navbar-logo">
+            <a href="/"><img class="logo" src="/assets/logos/logo.png" alt="Tracker Logo"></a>
+        </div>
+    </div>
+    <div class="header-container right">
+        <a class="dashboard-button outline" href="/volunteer/dashboard">
+            <div class="switch-dashboard-button">Volunteer View</div>
+        </a>
+        <a class="dashboard-button" onClick="logout()">
+            <div class="logout-button"><i class="fa-regular fa-right-from-bracket"></i> Logout</div>
+        </a>
+    </div>
+</header>
+
+<div class="page-container">
+    <main>
+        <section class="breadcumb-section">
+            <ul class="breadcrumb">
+            </ul>
+        </section>
+
+        <section class="content-header-section">
+            <h2 class="title"></h2>
+            <a class="dashboard-button dashboard-create-button" href="" data-link><i
+                    class="fa-regular fa-plus"></i>&nbsp;Create</a>
+            <button class="dashboard-button delete-all-button hidden" onClick="deleteItem('', true)"><i
+                    class="fa-regular fa-trash-can"></i>&nbsp;Delete&nbsp;<span
+                    class="delete-all-button-item-count"></span>&nbsp;Selected Items</button>
+        </section>
+
+        <section class="loading-content-section">
+            <div class="loading-content">
+                <div class="loading-animation">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section hidden">
+
+        </section>
+
+        <div class="toast-container" onClick="this.classList.remove('showToast')">
+            <div class="toast-header"></div>
+            <div class="toast-content"></div>
+        </div>
+
+        <div class="delete-container">
+            <div class="delete-popup-background" onClick="closeDeletePopup(false)"></div>
+            <div class="delete-popup-div">
+                <div class="delete-popup-header">Delete Item</div>
+                <div class="delete-popup-text">Are you sure you want to delete <span
+                        class="delete-popup-number-text"></span>?</div>
+                <div class="delete-popup-button-div">
+                    <button class="dashboard-button delete-all-button" onClick="closeDeletePopup(true)">Delete</button>
+                    <button class="dashboard-button dashboard-create-button"
+                        onClick="closeDeletePopup(false)">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>

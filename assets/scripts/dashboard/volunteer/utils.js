@@ -7,72 +7,39 @@ let endpoint;
 async function setPageHeaders(options) {
     return new Promise(async (resolve, reject) => {
 
-        const verify = await GET(`${config.apiUrl}/verify?model=${options.model}&action=${options.ode}`);
+        const verify = await GET(`${config.apiUrl}/verify?model=null&action=view`);
         if (verify.status !== 200) return location.href = '/login';
 
         document.querySelector('.content-header-section .title').innerHTML = options.pluralName;
-        document.querySelector('.dashboard-create-button').classList.remove('hidden');
-
-        if (options.noBreadcrumb) document.querySelector('.breadcrumb').classList.add('hidden')
-        else {
-            let breadcrumb = document.querySelector('.breadcrumb');
-            breadcrumb.classList.remove('hidden')
-
-            let html = `<li><a href="/admin/dashboard" data-link>Home</a></li>`
-
-            if (options.event) html += `<li><a href="/admin/dashboard/overview?event=${options.event}" data-link>${options.eventName}</a></li>`
-
-            if (options.event) html += `<li><a href="${options.url}?event=${options.event}" data-link>${options.pluralName}</a></li>`
-            else html += `<li><a href="${options.url}" data-link>${options.pluralName}</a></li>`
-
-            if (options.mode) {
-                if (options.event) html += `<li><a href="${options.url}?mode=${options.mode}&event=${options.event}${(options.id) ? `&id=${options.id}` : ''}" data-link>${options.mode.charAt(0).toUpperCase() + options.mode.slice(1)} ${options.singularName}</a></li>`
-                else html += `<li><a href="${options.url}?mode=${options.mode}${(options.id) ? `&id=${options.id}` : ''}" data-link>${options.mode.charAt(0).toUpperCase() + options.mode.slice(1)} ${options.singularName}</a></li>`
-                document.querySelector('.content-header-section .title').innerHTML = `${options.mode.charAt(0).toUpperCase() + options.mode.slice(1)} ${options.singularName}`;
-            }
-
-            breadcrumb.innerHTML = html;
+        if (options.customPage || !options.buttons) {
+            document.querySelector('.table-button-1').classList.add('hidden')
+            document.querySelector('.table-button-2').classList.add('hidden')
+            document.querySelector('.table-button-3').classList.add('hidden')
+            return resolve();
         }
+        document.querySelector('.table-button-1').innerHTML = options.buttons[0];
+        document.querySelector('.table-button-1').classList.remove('outline')
+        document.querySelector('.table-button-2').innerHTML = options.buttons[1];
+        document.querySelector('.table-button-2').classList.add('outline')
+        document.querySelector('.table-button-3').innerHTML = options.buttons[2];
+        document.querySelector('.table-button-3').classList.add('outline')
+        document.querySelector('.table-button-1').classList.remove('hidden')
+        document.querySelector('.table-button-2').classList.remove('hidden')
+        document.querySelector('.table-button-3').classList.remove('hidden')
 
-        if (options.customPage) {
-            document.querySelector('.content-header-section .title').innerHTML = options.name;
-            document.querySelector('.dashboard-create-button').classList.add('hidden');
-        }
-        else
-
-            if (options.event) document.querySelector('.dashboard-create-button').href = `${options.url}?mode=create&event=${options.event}`
-            else document.querySelector('.dashboard-create-button').href = `${options.url}?mode=create`
         resolve();
     })
 }
 
-async function generateEventList(list) {
-    let nav = document.querySelector('.navbar-event-section');
-    nav.innerHTML = "";
-    for (const event of list) {
-        nav.innerHTML += `
-            <li class="navbar-dropdown">
-                <a onClick="showDropdownMenu('event-dropdown-menu', this)" eventId="${event.id}">
-                    <span class="dropdown-event-text">${event.name}</span>
-                    <span class="navbar-caret"><i class="fa-solid fa-chevron-down"></i></span>
-                </a>
-                <ul class="navbar-dropdown-menu" id="event-dropdown-menu" eventId="${event.id}">
-                    <li><a href="/admin/dashboard/overview" eventShort="${event.short}" event-link >Overview</a></li>
-                    <li><a href="/admin/dashboard/speedruns" eventShort="${event.short}" event-link >Speedruns</a></li>
-                    <li><a href="/admin/dashboard/donations" eventShort="${event.short}" event-link >Donations</a></li>
-                    <li><a href="/admin/dashboard/incentives" eventShort="${event.short}" event-link >Incentives</a></li>
-                    <li><a href="/admin/dashboard/blurbs" eventShort="${event.short}" event-link >Blurbs</a></li>
-                    <li><a href="/admin/dashboard/prizes" eventShort="${event.short}" event-link >Prizes</a></li>
-                    <li><a href="/admin/dashboard/prizeRedemptions" eventShort="${event.short}" event-link >Prize Redemptions</a></li>
-                </ul>
-            </li>
-            `
-    }
-}
-
 // Page Generators
-async function generateTable(options) {
+async function generateTable(options, hideContent) {
     return new Promise(async (funcResolve, funcReject) => {
+
+        if (hideContent) {
+            document.querySelector('.loading-content-section').classList.remove('hidden');
+            document.querySelector('.content-section').classList.add('hidden');
+            document.querySelector('.content-section').innerHTML = '';
+        }
 
         model = options.model;
         endpoint = options.endpoint;
@@ -95,8 +62,10 @@ async function generateTable(options) {
         // Append to page.
         document.querySelector('.content-section').append(table);
 
-        // Show content when generation is complete.
-        //showContent();
+        if (hideContent) {
+            document.querySelector('.loading-content-section').classList.add('hidden');
+            document.querySelector('.content-section').classList.remove('hidden');
+        }
 
         funcResolve();
 
@@ -136,12 +105,13 @@ async function generateTable(options) {
                         if (options.rowAttribute !== undefined) {
                             row.setAttribute('rowAttr', options.rowAttribute(element))
                         }
+                        row.setAttribute('elementId', element._id)
+                        if (options.clickFunction) row.setAttribute('onClick', options.clickFunction(element));
                         row.insertCell().innerHTML = `
                         <label class="checkbox-container">
                             <input type="checkbox" item="${element._id}" onClick="selectRows(this.checked, '${element._id}')">
                             <span class="checkbox-checkmark"></span>
                         </label>`
-                        // row.insertCell().innerHTML = `<input type="checkbox" class="table-checkbox" onClick="selectRows(this)" item="${element._id}"</input>`;
                         for (const option of options.table) {
                             let cell = row.insertCell();
                             cell.setAttribute('priority', (option.priority) ? `${option.priority}` : '1')
@@ -154,33 +124,97 @@ async function generateTable(options) {
                                 }
                             }
                         }
-                        if (options.volunteer) {
-                            // This needs to be changed.
-                            row.insertCell().innerHTML = `
-                <div class="tableDropdown">
-            <button class="tableButton noDropdown" onClick="volunteerSwitchPage('${options.model}', '${element._id}')"><span class="material-icons-outlined">
-                    info
-                </span></button>
-            `;
-                        }
-                        else if (options.model !== 'auditLog') {
-                            row.insertCell().innerHTML = `
+                        // This needs to be changed.
+                        row.insertCell().innerHTML = `
                             <div class="table-dropdown">
-                                <button class="table-dropdown-menu-button"><i class="fa-solid fa-ellipsis"></i></button>
-                                <div class="table-dropdown-content">
-                                    <button class="table-dropdown-button" onClick="changeMode('view', '${element._id}', '${options.event}')"><i class="fa-solid fa-display"></i>&nbsp;View</button>
-                                    <button class="table-dropdown-button" onClick="changeMode('edit', '${element._id}', '${options.event}')"><i class="fa-solid fa-pen-to-square"></i>&nbsp;Edit</button>
-                                    <button class="table-dropdown-button delete" onClick="deleteItem('${element._id}', false)"><i class="fa-regular fa-trash-can"></i>&nbsp;Delete</button>
-                                </div>
+                                <button class="volunteer-table-expand-button">
+                                    <i class="fa-solid fa-chevron-down"></i>
+                                </button>
                             </div>`;
-                        }
                         tbody.append(row);
+
+                        if (options.subTable) {
+                            let subTableRow = document.createElement('tr');
+                            subTableRow.classList.add('subTableRow');
+                            subTableRow.setAttribute('dataid', element._id);
+                            let cell = subTableRow.insertCell();
+                            cell.setAttribute('colSpan', 100)
+                            cell.classList.add('subTableTd')
+                            cell.append(await generateSubTable(options, element));
+
+                            // let invisibleRow = document.createElement('tr');
+                            //  invisibleRow.style.display = 'none';
+
+                            if (options.subTableButtons) {
+                                let buttonText = '<div class="sub-table-button-div">';
+                                for (let i = 0; i < options.subTableButtons.length; i++) {
+                                    buttonText += `<button class="dashboard-button" onClick="${options.subTableButtons[i].actionFunction(element)}">${options.subTableButtons[i].name}</button>`
+                                }
+                                buttonText += '</div>'
+                                cell.innerHTML += buttonText
+                            }
+    
+
+                            tbody.append(subTableRow);
+                            // tbody.append(invisibleRow);
+                        }
                     }
                 }
                 resolve(tbody);
             })
         }
     })
+}
+
+async function expandRow(id) {
+    let alreadyOpen = false;
+    if (document.querySelector(`.subTableRow[dataid="${id}"]`).classList.contains('active')) alreadyOpen = true
+    let rows = document.querySelectorAll('.subTableRow.active');
+    for (const row of rows) {
+        row.classList.remove('active');
+    }
+    if (!alreadyOpen) document.querySelector(`.subTableRow[dataid="${id}"]`).classList.add('active');
+}
+
+async function generateSubTable(options, rowData) {
+    return new Promise(async (resolve, reject) => {
+        let table = document.createElement('table');
+        for (const option of options.subTable) {
+            let subTableRow = document.createElement('tr');
+            subTableRow.insertCell().innerHTML = option.name;
+            if (option.textFunction) subTableRow.insertCell().innerHTML = option.textFunction(rowData);
+            else subTableRow.insertCell().innerHTML = rowData[option.data];
+            table.append(subTableRow)
+        }
+        resolve(table)
+    })
+}
+
+async function markDonationAsRead(id) {
+    document.querySelector(`tr[elementId="${id}"`).setAttribute('rowattr', 'true')
+    document.querySelector(`.subTableRow[dataid="${id}"`).classList.remove('active');
+    await POST(`${config.apiUrl}/donation?_id=${id}`, {
+        read: true
+    }),
+    setRowVisibility(null, true);
+}
+
+async function hideDonation(id) {
+    document.querySelector(`tr[elementId="${id}"`).remove();
+    document.querySelector(`.subTableRow[dataid="${id}"`).classList.remove('active');
+    await POST(`${config.apiUrl}/donation?_id=${id}`, {
+        visible: false
+    }),
+    setRowVisibility(null, true);
+}
+
+async function setIncentiveActiveStatus(id, status) {
+    document.querySelector(`tr[elementId="${id}"`).setAttribute('rowattr', `${(status) ? 'false' : 'true'}`)
+    document.querySelector(`.subTableRow[dataid="${id}"`).classList.remove('active');
+    await POST(`${config.apiUrl}/incentive?_id=${id}`, {
+        active: status
+    }),
+    setRowVisibility(null, true);
 }
 
 async function selectRows(checked, element) {
@@ -221,16 +255,15 @@ async function generateForm(options) {
         // }
 
         // Generate datalists (if needed).
-        if (options.datalist) {
+        if (options.datalist !== undefined) {
             for (const key of Object.keys(options.datalist)) {
-                await fetchDatalist(options.datalist[key], key)
-                // let datalist = document.createElement('datalist');
-                // datalist.setAttribute('id', key)
-                // let datalistData = await GET(options.datalist[key].endpoint);
-                // for (const item of datalistData.data) {
-                //     datalist.innerHTML += `<option dataId="${item._id}" value="${options.datalist[key].textFunction(item)}">ID: ${item._id}</option>`
-                // }
-                // document.querySelector('.content-section').append(datalist);
+                let datalist = document.createElement('datalist');
+                datalist.setAttribute('id', key)
+                let datalistData = await GET(options.datalist[key].endpoint);
+                for (const item of datalistData.data) {
+                    datalist.innerHTML += `<option dataId="${item._id}" value="${options.datalist[key].textFunction(item)}">ID: ${item._id}</option>`
+                }
+                document.querySelector('.content-section').append(datalist);
             }
         }
 
@@ -441,18 +474,6 @@ async function generateForm(options) {
             document.querySelector(`#${field.data} .array.div`).append(await addArrayElement(field))
         }
 
-        async function fetchDatalist(list, key) {
-            return new Promise(async (resolve, reject) => {
-                let datalist = document.createElement('datalist');
-                datalist.setAttribute('id', key)
-                let datalistData = await GET(list.endpoint);
-                for (const item of datalistData.data) {
-                    datalist.innerHTML += `<option dataId="${item._id}" value="${list.textFunction(item)}">ID: ${item._id}</option>`
-                }
-                document.querySelector('.content-section').append(datalist);
-                resolve();
-            })
-        }
     })
 }
 

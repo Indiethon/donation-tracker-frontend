@@ -28,6 +28,7 @@
     --nav-button-foreground-color: #999999;
     --nav-button-hover-foreground-color: white;
     --nav-button-click-foreground-color: white;
+    --nav-toggle-icon-color: white;
 
     /* Event Selector Dropdown */
     --event-dropdown-font-family: 'Inter-Regular', sans-serif;
@@ -111,12 +112,29 @@
     /* Pagination */
     --pagination-font-family: 'Inter-Regular', sans-serif;
     --pagination-font-color: #595959;
+    --pagination-input-foreground-color: black;
+    --pagination-input-background-color: transparent;
     --pagination-button-foreground-color: white;
     --pagination-button-background-color: #4268F6;
     --pagination-button-hover-foreground-color: white;
     --pagination-button-hover-background-color: #585b90;
     --pagination-button-click-foreground-color: white;
     --pagination-button-click-background-color: #585b90;
+
+    /* ----- Run Page Styles ----- */
+    --current-run-header-font-family: 'Urbanist-Variable', sans-serif;
+    --current-run-header-background-color: green;
+    --current-run-header-foreground-color: black;
+    --current-run-font-family: 'Inter-Regular', sans-serif;
+    --current-run-background-color: red;
+    --current-run-foreground-color: black;
+
+    --next-run-header-font-family: 'Urbanist-Variable', sans-serif;
+    --next-run-header-background-color: green;
+    --next-run-header-foreground-color: black;
+    --next-run-font-family: 'Inter-Regular', sans-serif;
+    --next-run-background-color: red;
+    --next-run-foreground-color: black;
 
     /* ----- Message Page Styles ----- */
     --message-header-font-family: 'Urbanist-Variable', sans-serif;
@@ -301,46 +319,320 @@
     --donate-button-border-color: black;
     --donate-button-border-radius: 5px;
     --donate-button-border-thickness: 1px;
-    --donate-button-hover-foreground: white;
-    --donate-button-hover-background: #404040;
+    --donate-button-hover-foreground-color: white;
+    --donate-button-hover-background-color: #404040;
     --donate-button-hover-border-color: #404040;
 }
 
 /* Dark Mode Variables */
 [data-theme="dark"] {
 
-    /* ----- Global styles ----- */
-    --global-font-family: 'Inter-Regular', sans-serif;
-    --header-background-color: #262626;
-    --body-foreground-color: #F5F5F5;
-    --body-background-color: #000000;
-    --link-color: #00aeef;
-    --link-hover-color: #0076a3;
-
-    /* Top Navigation Buttons */
-    --nav-button-font-family: 'Inter-Regular', sans-serif;
-    --nav-button-foreground-color: #999999;
-    --nav-button-hover-foreground-color: white;
-    --nav-button-click-foreground-color: white;
-
-    /* Event Selector Dropdown */
-    --event-dropdown-font-family: 'Inter-Regular', sans-serif;
-    --event-dropdown-foreground-color: black;
-    --event-dropdown-background-color: white;
-    --event-dropdown-separator-color: rgb(192, 192, 202);
-    --event-dropdown-hover-foreground-color: black;
-    --event-dropdown-hover-background-color: #f2f2f2;
-    --event-dropdown-click-foreground-color: black;
-    --event-dropdown-click-background-color: #f2f2f2;
-    --event-dropdown-border-color: #696969;
-    --event-dropdown-border-radius: 5px;
-
-    /* Top Navigation Donate Button */
-    --nav-donate-button-font-family: 'Inter-Regular', sans-serif;
-    --nav-donate-button-foreground-color: white;
-    --nav-donate-button-background-color: #4268F6;
-    --nav-donate-button-hover-foreground-color: white;
-    --nav-donate-button-hover-background-color: #535B8E;
-    --nav-donate-button-click-foreground-color: white;
-    --nav-donate-button-click-background-color: #535B8E;
+     /* ----- Global styles ----- */
+     --global-font-family: 'Inter-Regular', sans-serif;
+     --header-background-color: #242424;
+     --body-foreground-color: #d8d8d8;
+     --body-background-color: #1c1c1c;
+     --link-color: #3f51b5;
+     --link-hover-color: #1b234e;
+     --fader-background-color: #262626;
+ 
+     /* Top Navigation Buttons */
+     --nav-button-font-family: 'Inter-Regular', sans-serif;
+     --nav-button-foreground-color: #999999;
+     --nav-button-hover-foreground-color: #d9d9d9;
+     --nav-button-click-foreground-color: #d9d9d9;
+     --nav-toggle-icon-color: #d9d9d9;
+ 
+     /* Event Selector Dropdown */
+     --event-dropdown-font-family: 'Inter-Regular', sans-serif;
+     --event-dropdown-foreground-color: #d9d9d9;
+     --event-dropdown-background-color: #242424;
+     --event-dropdown-hover-foreground-color: #d9d9d9;
+     --event-dropdown-hover-background-color: #383838;
+     --event-dropdown-click-foreground-color: #d9d9d9;
+     --event-dropdown-click-background-color: #383838;
+     --event-dropdown-border-color: #d8d8d8;
+     --event-dropdown-border-radius: 5px;
+ 
+     /* Top Navigation Donate Button */
+     --nav-donate-button-font-family: 'Inter-Regular', sans-serif;
+     --nav-donate-button-foreground-color: #d9d9d9;
+     --nav-donate-button-background-color: #494db8;
+     --nav-donate-button-hover-foreground-color: #d9d9d9;
+     --nav-donate-button-hover-background-color: #535B8E;
+     --nav-donate-button-click-foreground-color: #d9d9d9;
+     --nav-donate-button-click-background-color: #535B8E;
+ 
+     /* Page Header */
+     --page-header-font-family: 'Urbanist-Variable', sans-serif;
+     --page-header-foreground-color: #565eab;
+     --page-header-font-weight: 900;
+ 
+     /* ----- Info Pages ----- */
+ 
+     /* Donation Stats */
+     --donation-stats-font-family: 'Inter-Regular', sans-serif;
+     --donation-stats-foreground-color: #d9d9d9;
+ 
+     /* Timezone Text */
+     --timezone-text-font-family: 'Inter-Regular', sans-serif;
+     --timezone-text-foreground-color: #808080;
+ 
+     /* Table Header */
+     --table-header-foreground-color: #d9d9d9;
+     --table-header-background-color: #272727;
+     --table-header-font-family: 'Inter-Regular', sans-serif;
+ 
+     /* Table Rows */
+     --table-row-font-family: 'Inter-Regular', sans-serif;
+     --table-row-border-color: #383838;
+     --table-row-border-thickness: 2px;
+     --table-row-odd-foreground-color: #d8d8d8;
+     --table-row-even-foreground-folor: #d8d8d8;
+     --table-row-odd-background-color: #1d1d1d;
+     --table-row-even-background-color: #272727;
+     --table-row-hover-foreground-color: #d8d8d8;
+     --table-row-hover-background-color: #333333;
+     --table-row-click-foreground-color: #d8d8d8;
+     --table-row-click-background-color: #333333;
+ 
+     /* Table Date Rows */
+     --table-date-row-background-color: #404040;
+     --table-date-row-foreground-color: #d8d8d8;
+     --table-date-row-font-family: 'Urbanist-Variable', sans-serif;
+     --table-date-row-font-weight: 900;
+ 
+     /* Table Option Button */
+     --table-option-button-font-family: 'Inter-Regular', sans-serif;
+     --table-option-button-foreground-color: #d8d8d8;
+     --table-option-button-background-color: #494db8;
+     --table-option-button-hover-foreground-color: #d8d8d8;
+     --table-option-button-hover-background-color: #585b90;
+     --table-option-button-click-foreground-color: #d8d8d8;
+     --table-option-button-click-background-color: #585b90;
+ 
+     /* Sub Table Rows */
+     --sub-table-row-background-color: #1d1d1d;
+     --sub-table-row-odd-foreground-color: #d8d8d8;
+     --sub-table-row-even-foreground-folor: #d8d8d8;
+     --sub-table-row-odd-background-color: #1d1d1d;
+     --sub-table-row-even-background-color: #272727;
+     --sub-table-row-hover-foreground-color: #d8d8d8;
+     --sub-table-row-hover-background-color: #333333;
+     --sub-table-row-click-foreground-color: #d8d8d8;
+     --sub-table-row-click-background-color: #333333;
+ 
+     /* Pagination */
+     --pagination-font-family: 'Inter-Regular', sans-serif;
+     --pagination-font-color: #808080;
+     --pagination-input-foreground-color: #d8d8d8;
+     --pagination-input-background-color: transparent;
+     --pagination-button-foreground-color: #d8d8d8;
+     --pagination-button-background-color: #494db8;
+     --pagination-button-hover-foreground-color: #d8d8d8;
+     --pagination-button-hover-background-color: #585b90;
+     --pagination-button-click-foreground-color: #d8d8d8;
+     --pagination-button-click-background-color: #585b90;
+ 
+     /* ----- Run Page Styles ----- */
+     --current-run-header-font-family: 'Urbanist-Variable', sans-serif;
+     --current-run-header-background-color: green;
+     --current-run-header-foreground-color: black;
+     --current-run-font-family: 'Inter-Regular', sans-serif;
+     --current-run-background-color: red;
+     --current-run-foreground-color: black;
+ 
+     --next-run-header-font-family: 'Urbanist-Variable', sans-serif;
+     --next-run-header-background-color: green;
+     --next-run-header-foreground-color: black;
+     --next-run-font-family: 'Inter-Regular', sans-serif;
+     --next-run-background-color: red;
+     --next-run-foreground-color: black;
+ 
+     /* ----- Message Page Styles ----- */
+     --message-header-font-family: 'Urbanist-Variable', sans-serif;
+     --message-header-font-color: #4268F6;
+ 
+     --message-content-font-family: 'Inter-Regular', sans-serif;
+     --message-content-font-color: #d8d8d8;
+ 
+     /* ----- Donation Page Styles ----- */
+ 
+     /* General */
+     --charity-subtext-font-family: 'Inter-Regular', sans-serif;
+     --charity-subtext-font-color: #d8d8d8;
+     
+     --input-label-text-color: #d8d8d8;
+     --input-subtext-text-color: #cccccc;
+     --input-error-text-color: #ff7992;
+     --input-label-font-family: 'Inter-Regular', sans-serif;
+     --input-subtext-font-family: 'Inter-Regular', sans-serif;
+     --input-error-font-family: 'Inter-Regular', sans-serif;
+ 
+     /* Text Inputs */
+     --input-font-family: 'Inter-Regular', sans-serif;
+     --input-foreground-color: #d8d8d8;
+     --input-background-color: #222222;
+     --input-border-color: #404040;
+     --input-border-radius: 5px;
+     --input-border-thickness: 1px;
+     --input-hover-foreground-color: #d8d8d8;
+     --input-hover-background-color: #2c2c2c;
+     --input-hover-border-color: #494db8;
+     --input-focus-foreground-color: #d8d8d8;
+     --input-focus-background-color: #404040;
+     --input-focus-border-color: #494db8;
+ 
+     /* Incentive General */
+     --incentive-font-family: 'Inter-Regular', sans-serif;
+ 
+     /* Add Incentive Button */
+     --incentive-add-button-foreground-color: #d8d8d8;
+     --incentive-add-button-background-color: #222222;
+     --incentive-add-button-border-color: #404040;
+     --incentive-add-button-border-radius: 5px;
+     --incentive-add-button-border-thickness: 1px;
+     --incentive-add-button-hover-foreground-color: #d8d8d8;
+     --incentive-add-button-hover-background-color: #2c2c2c;
+     --incentive-add-button-hover-border-color: #383838;
+ 
+     /* Incentive Select Container */
+     --incentive-container-border-color: #383838;
+     --incentive-container-border-radius: 10px;
+     --incentive-container-border-thickness: 1px;
+ 
+     /* Incentive List Window */
+     --incentive-list-background-color: #222222;
+     --incentive-list-border-color: #383838;
+     --incentive-list-border-thickness: 1px;
+     --incentive-list-hover-background-color: #383838;
+     --incentive-list-selected-background-color: #383838;
+ 
+     --incentive-list-game-font-family: 'Urbanist-Variable', sans-serif;
+     --incentive-list-game-color: #d8d8d8;
+     --incentive-list-hover-game-color: #d8d8d8;
+     --incentive-list-selected-game-color: #d8d8d8;
+ 
+     --incentive-list-name-font-family: 'Inter-Regular', sans-serif;
+     --incentive-list-name-color: #d8d8d8;
+     --incentive-list-hover-name-color: #d8d8d8;
+     --incentive-list-selected-name-color: #d8d8d8;
+ 
+     /* Incentive Details Window */
+     --incentive-details-foreground-color: #d8d8d8;
+     --incentive-details-background-color: #1c1c1c;
+     --incentive-details-font-family: 'Inter-Regular', sans-serif;
+ 
+     --incentive-details-game-font-family: 'Urbanist-Variable', sans-serif;
+     --incentive-details-game-color: #d8d8d8;
+ 
+     --incentive-details-name-color: #d8d8d8;
+ 
+     --incentive-details-progress-foreground-color: #5742ff;
+     --incentive-details-progress-background-color: #1c1c1c;
+     --incentive-details-progress-border-color: #383838;
+     --incentive-details-progress-border-radius: 5px;
+     --incentive-details-progress-border-width: 1px;
+     --incentive-details-progress-height: 8px;
+ 
+     --incentive-details-input-font-family: 'Inter-Regular', sans-serif;
+     --incentive-details-input-foreground-color: #d8d8d8;
+     --incentive-details-input-background-color: #1c1c1c;
+     --incentive-details-input-border-color: #383838;
+     --incentive-details-input-border-radius: 5px;
+     --incentive-details-input-border-thickness: 1px;
+     --incentive-details-input-hover-foreground-color: #d8d8d8;
+     --incentive-details-input-hover-background-color: #2c2c2c;
+     --incentive-details-input-hover-border-color: #494db8;
+     --incentive-details-input-focus-foreground-color: #d8d8d8;
+     --incentive-details-input-focus-background-color: #404040;
+     --incentive-details-input-focus-border-color: #494db8;
+ 
+     --incentive-details-option-hover-background-color: #383838;
+     --incentive-details-option-selected-background-color: #383838;
+ 
+     /* Incentive confirm button */
+     --incentive-confirm-button-foreground-color: #d8d8d8;
+     --incentive-confirm-button-background-color: #242424;
+     --incentive-confirm-button-border-color: #383838;
+     --incentive-confirm-button-border-radius: 5px;
+     --incentive-confirm-button-border-thickness: 1px;
+     --incentive-confirm-button-hover-foreground-color: #d8d8d8;
+     --incentive-confirm-button-hover-background-color: #383838;
+     --incentive-confirm-button-hover-border-color: #383838;
+ 
+     /* Selected Incentives List */
+     --incentive-selected-font-family: 'Inter-Regular', sans-serif;
+     --incentive-selected-foreground-color: #d8d8d8;
+     --incentive-selected-background-color: #1c1c1c;
+     --incentive-selected-border-color: #383838;
+     --incentive-selected-border-thickness: 1px;
+ 
+     --incentive-selected-game-font-family: 'Urbanist-Variable', sans-serif;
+     --incentive-selected-game-color: #d8d8d8;
+ 
+     --incentive-selected-name-font-family: 'Inter-Regular', sans-serif;
+     --incentive-selected-name-color: #d8d8d8;
+ 
+     --incentive-selected-button-foreground-color: #d8d8d8;
+     --incentive-selected-button-background-color: #242424;
+     --incentive-selected-button-border-color: #383838;
+     --incentive-selected-button-border-radius: 5px;
+     --incentive-selected-button-border-thickness: 1px;
+     --incentive-selected-button-hover-foreground-color: #d8d8d8;
+     --incentive-selected-button-hover-background-color: #383838;
+     --incentive-selected-button-hover-border-color: #383838;
+ 
+     /* Prize List Container */
+     --prize-list-foreground-color: #d8d8d8;
+     --prize-list-background-color: #272727;
+     --prize-list-border-radius: 10px;
+     --prize-list-border-color: #383838;
+     --prize-list-border-thickness: 1px;
+ 
+     /* Prize List Items */
+     --prize-list-item-background-color: #272727;
+     --prize-list-item-border-color: #383838;
+     --prize-list-item-border-thickness: 1px;
+ 
+     --prize-list-item-name-font-family: 'Urbanist-Variable', sans-serif;
+     --prize-list-item-name-color: #d8d8d8;
+ 
+     --prize-list-item-donation-font-family: 'Inter-Regular', sans-serif;
+     --prize-list-item-donation-color: #d8d8d8;
+ 
+     --prize-list-item-hover-background-color: #383838;
+ 
+     /* Prize Info Container */
+     --prize-popup-shadow-color: black;
+     
+     --prize-popup-font-family: 'Inter-Regular', sans-serif;
+     --prize-popup-background-color: #1e1e1e;
+     --prize-popup-foreground-color: #d8d8d8;
+ 
+     --prize-popup-name-font-family: 'Urbanist-Variable', sans-serif;
+     --prize-popup-name-color: #3f51b5;
+ 
+     --prize-popup-button-foreground-color: #d8d8d8;
+     --prize-popup-button-background-color: #323232;
+     --prize-popup-button-border-color: #383838;
+     --prize-popup-button-border-radius: 5px;
+     --prize-popup-button-border-thickness: 1px;
+     --prize-popup-button-hover-foreground-color: #d8d8d8;
+     --prize-popup-button-hover-background-color: #383838;
+     --prize-popup-button-hover-border-color: #383838;
+ 
+     /* Donate Button */
+     --error-text-font-family: 'Inter-Regular', sans-serif;
+     --error-text-color: #ff7992;
+ 
+     --donate-button-font-family: 'Inter-Regular', sans-serif;
+     --donate-button-foreground-color: #d8d8d8;
+     --donate-button-background-color: #2c2c2c;
+     --donate-button-border-color: #383838;
+     --donate-button-border-radius: 5px;
+     --donate-button-border-thickness: 1px;
+     --donate-button-hover-foreground-color: #d8d8d8;
+     --donate-button-hover-background-color: #383838;
+     --donate-button-hover-border-color: #383838;
 }

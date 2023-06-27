@@ -1,0 +1,249 @@
+/* Fonts */
+@font-face {
+    font-family: "Inter-Regular";
+    src: url('/assets/fonts/Inter-VariableFont_slnt\,wght.ttf');
+}
+
+@font-face {
+    font-family: "Urbanist-Variable";
+    src: url("/assets/fonts/Urbanist[wght].ttf");
+}
+
+/* Light Mode Variables */
+:root {
+
+    /* Edit the below variables to customize the frontend pages! */
+
+    /* ----- Global styles ----- */
+    --dashboard-global-font-family: 'Inter-Regular', sans-serif;
+    --dashboard-header-global-font-family: 'Urbanist-Variable', sans-serif;
+    --dashboard-header-background-color: white;
+    --dashboard-header-border-color: rgb(213, 213, 213);
+    --dashboard-body-foreground-color: #000000;
+    --dashboard-body-background-color: #F3F3F3;
+    --dashboard-navbar-icon-color: #000000;
+
+    --dashboard-navbar-section-color: #1e1e1e;
+    --dashboard-navbar-dropdown-selected-background-color: rgb(246, 247, 251);
+    --dashboard-navbar-item-hover-foreground-color: rgb(66, 104, 246);
+    --dashboard-navbar-item-foreground-color: rgb(69, 70, 85);
+
+    --dashboard-button-foreground-color: white;
+    --dashboard-button-background-color: rgb(66, 104, 246);
+    --dashboard-button-hover-foreground-color: white;
+    --dashboard-button-hover-background-color: #535b8e;
+
+    --dashboard-button-outline-border-color: rgb(66, 104, 246);
+    --dashboard-button-outline-foreground-color: rgb(66, 104, 246);
+    --dashboard-button-outline-background-color: transparent;
+    --dashboard-button-outline-hover-border-color: #535b8e;
+    --dashboard-button-outline-hover-foreground-color: white;
+    --dashboard-button-outline-hover-background-color: #535b8e;
+
+    --dashboard-delete-button-color: rgb(194, 0, 18);
+
+    --dashboard-breadcrumb-color: rgb(178, 178, 178);
+    --dashboard-breadcrumb-hover-color: rgb(66, 104, 246);
+
+    --dashboard-content-foreground-color: black;
+    --dashboard-content-bacckground-color: white;
+
+    --dashboard-loading-animation-color: rgb(66, 104, 246);
+
+    --dashboard-table-header-background-color: #F3F3F3;
+    --dashboard-table-header-foreground-color: black;
+    --dashboard-table-row-background-color: #FFFFFF;
+    --dashboard-table-row-foreground-color: black;
+    --dashboard-table-row-hover-background-color: #F3F3F3;
+    --dashboard-table-border-color: rgb(246, 247, 251);
+
+    --dashboard-table-button-foreground-color: black;
+    --dashboard-table-button-background-color: transparent;
+    --dashboard-table-button-hover-foreground-color: black;
+    --dashboard-table-button-hover-bacckground-color: rgb(246, 247, 251);
+
+    --dashboard-table-menu-button-foreground-color: black;
+    --dashboard-table-menu-button-background-color: #ffffff;
+    --dashboard-table-menu-button-hover-foreground-color: black;
+    --dashboard-table-menu-button-hover-bacckground-color: rgb(246, 247, 251);
+
+    --dashboard-table-menu-delete-button-foreground-color: rgb(194, 0, 18);
+    --dashboard-table-menu-delete-button-background-color: #ffffff;
+    --dashboard-table-menu-delete-button-hover-foreground-color: rgb(194, 0, 18);
+    --dashboard-table-menu-delete-button-hover-bacckground-color: #fcf2f3;
+
+    --dashboard-table-checkbox-border-color: rgb(187, 195, 203);
+    --dashboard-table-checkbox-checked-foreground-color: #f6f7fb;
+    --dashboard-table-checkbox-checked-background-color: #4d70eb;
+
+    --dashboard-delete-popup-background-color: black;
+    --dashboard-delete-popup-foreground-color: #F3F3F3;
+
+
+    /* Top Navigation Buttons */
+    --nav-button-font-family: 'Inter-Regular', sans-serif;
+    --nav-button-foreground-color: #999999;
+    --nav-button-hover-foreground-color: white;
+    --nav-button-click-foreground-color: white;
+
+    /* Event Selector Dropdown */
+    --event-dropdown-font-family: 'Inter-Regular', sans-serif;
+    --event-dropdown-foreground-color: black;
+    --event-dropdown-background-color: white;
+    --event-dropdown-hover-foreground-color: black;
+    --event-dropdown-hover-background-color: #f2f2f2;
+    --event-dropdown-click-foreground-color: black;
+    --event-dropdown-click-background-color: #f2f2f2;
+    --event-dropdown-border-color: #696969;
+    --event-dropdown-border-radius: 5px;
+
+    /* Top Navigation Donate Button */
+    --nav-donate-button-font-family: 'Inter-Regular', sans-serif;
+    --nav-donate-button-foreground-color: white;
+    --nav-donate-button-background-color: #4268F6;
+    --nav-donate-button-hover-foreground-color: white;
+    --nav-donate-button-hover-background-color: #535B8E;
+    --nav-donate-button-click-foreground-color: white;
+    --nav-donate-button-click-background-color: #535B8E;
+
+    /* Page Header */
+    --page-header-font-family: 'Urbanist-Variable', sans-serif;
+    --page-header-foreground-color: #3f51b5;
+    --page-header-font-weight: 900;
+
+    /* Inputs */
+    --dashboard-input-background-color: transparent;
+    --dashboard-input-foreground-color: black;
+    --dashboard-input-border-color: rgb(192, 192, 202);
+    --dashboard-input-hover-background-color: transparent;
+    --dashboard-input-hover-foreground-color: black;
+    --dashboard-input-hover-border-color: rgb(68, 107, 246);
+    --dashboard-input-selected-background-color: transparent;
+    --dashboard-input-selected-foreground-color: black;
+    --dashboard-input-selected-border-color: rgb(68, 107, 246);
+    --dashboard-input-disabled-background-color: rgb(240, 240, 240);
+    --dashboard-input-disabled-foreground-color: black;
+    --dashboard-input-disabled-border-color: rgb(192, 192, 202);
+    --dashboard-input-array-container-accent: rgb(66, 104, 246);
+    --dashboard-input-array-container-hover-accent: #535B8E;
+    --dashboard-error-text-color: red;
+}
+
+/* Dark Mode Variables */
+[data-theme="dark"] {
+
+    /* ----- Global styles ----- */
+    --dashboard-global-font-family: 'Inter-Regular', sans-serif;
+    --dashboard-header-global-font-family: 'Urbanist-Variable', sans-serif;
+    --dashboard-header-background-color: #1e1e1e;
+    --dashboard-header-border-color: #2a2a2a;
+    --dashboard-body-foreground-color: #d9d9d9;
+    --dashboard-body-background-color: #121212;
+    --dashboard-navbar-icon-color: #d9d9d9;
+
+    --dashboard-navbar-section-color: #999999;
+    --dashboard-navbar-dropdown-selected-background-color: #232323;
+    --dashboard-navbar-item-hover-foreground-color: #6868ca;
+    --dashboard-navbar-item-foreground-color: #d9d9d9;
+
+    --dashboard-button-foreground-color: #d9d9d9;
+    --dashboard-button-background-color: #494db8;
+    --dashboard-button-hover-foreground-color: #d9d9d9;
+    --dashboard-button-hover-background-color: #42466e;
+
+    --dashboard-button-outline-border-color: #494db8;
+    --dashboard-button-outline-foreground-color: #494db8;
+    --dashboard-button-outline-background-color: transparent;
+    --dashboard-button-outline-hover-border-color: #42466e;
+    --dashboard-button-outline-hover-foreground-color: #d9d9d9;
+    --dashboard-button-outline-hover-background-color: #42466e;
+
+    --dashboard-delete-button-color: #b00020;
+
+    --dashboard-breadcrumb-color: #666666;
+    --dashboard-breadcrumb-hover-color: #494db8;
+
+    --dashboard-content-foreground-color: #d9d9d9;
+    --dashboard-content-bacckground-color: #1d1d1d;
+
+    --dashboard-loading-animation-color: #494db8;
+
+    --dashboard-table-header-background-color: #2c2c2c;
+    --dashboard-table-header-foreground-color: #d9d9d9;
+    --dashboard-table-row-background-color: #252525;
+    --dashboard-table-row-foreground-color: #d9d9d9;
+    --dashboard-table-row-hover-background-color: #272727;
+    --dashboard-table-border-color: #272727;
+
+    --dashboard-table-button-foreground-color: #d9d9d9;
+    --dashboard-table-button-background-color: transparent;
+    --dashboard-table-button-hover-foreground-color: #d9d9d9;
+    --dashboard-table-button-hover-bacckground-color: #252525;
+
+    --dashboard-table-menu-button-foreground-color: #d9d9d9;
+    --dashboard-table-menu-button-background-color: #252525;
+    --dashboard-table-menu-button-hover-foreground-color: #d9d9d9;
+    --dashboard-table-menu-button-hover-bacckground-color: #212121;
+
+    --dashboard-table-menu-delete-button-foreground-color: #c46678;
+    --dashboard-table-menu-delete-button-background-color: #252525;
+    --dashboard-table-menu-delete-button-hover-foreground-color: #c46678;
+    --dashboard-table-menu-delete-button-hover-bacckground-color: #212121;
+
+    --dashboard-table-checkbox-border-color: #4d4d4d;
+    --dashboard-table-checkbox-checked-foreground-color: #d9d9d9;
+    --dashboard-table-checkbox-checked-background-color: #494db8;
+
+    --dashboard-delete-popup-background-color: black;
+    --dashboard-delete-popup-foreground-color: #252525;
+
+
+    /* Top Navigation Buttons */
+    --nav-button-font-family: 'Inter-Regular', sans-serif;
+    --nav-button-foreground-color: #999999;
+    --nav-button-hover-foreground-color: white;
+    --nav-button-click-foreground-color: white;
+
+    /* Event Selector Dropdown */
+    --event-dropdown-font-family: 'Inter-Regular', sans-serif;
+    --event-dropdown-foreground-color: black;
+    --event-dropdown-background-color: white;
+    --event-dropdown-hover-foreground-color: black;
+    --event-dropdown-hover-background-color: #f2f2f2;
+    --event-dropdown-click-foreground-color: black;
+    --event-dropdown-click-background-color: #f2f2f2;
+    --event-dropdown-border-color: #696969;
+    --event-dropdown-border-radius: 5px;
+
+    /* Top Navigation Donate Button */
+    --nav-donate-button-font-family: 'Inter-Regular', sans-serif;
+    --nav-donate-button-foreground-color: white;
+    --nav-donate-button-background-color: #4268F6;
+    --nav-donate-button-hover-foreground-color: white;
+    --nav-donate-button-hover-background-color: #535B8E;
+    --nav-donate-button-click-foreground-color: white;
+    --nav-donate-button-click-background-color: #535B8E;
+
+    /* Page Header */
+    --page-header-font-family: 'Urbanist-Variable', sans-serif;
+    --page-header-foreground-color: #3f51b5;
+    --page-header-font-weight: 900;
+
+    /* Inputs */
+    --dashboard-input-background-color: transparent;
+    --dashboard-input-foreground-color: #d9d9d9;
+    --dashboard-input-border-color: #4d4d4d;
+    --dashboard-input-hover-background-color: transparent;
+    --dashboard-input-hover-foreground-color: #d9d9d9;
+    --dashboard-input-hover-border-color: #494db8;
+    --dashboard-input-selected-background-color: transparent;
+    --dashboard-input-selected-foreground-color: #d9d9d9;
+    --dashboard-input-selected-border-color: #494db8;
+    --dashboard-input-disabled-background-color: #252525;
+    --dashboard-input-disabled-foreground-color: #d9d9d9;
+    --dashboard-input-disabled-border-color: #4d4d4d;
+    --dashboard-input-array-container-accent: #494db8;
+    --dashboard-input-array-container-hover-accent: #535B8E;
+    --dashboard-error-text-color: #c46678;
+
+}

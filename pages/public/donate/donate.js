@@ -48,7 +48,7 @@ async function load() {
         }
 
         document.querySelector('header h1').innerHTML = `Donate to ${details.activeEvent.charity.name}`;
-        document.querySelector('.charity-subtext-charity').innerHTML = details.activeEvent.charity.name;
+        document.querySelector('.charity-subtext').innerHTML = `All money raised during ${details.activeEvent.name} goes directly to ${details.activeEvent.charity.name}. Thank you for your generosity in supporting this amazing charity!`;
         document.querySelector('.privacy-policy-link').href = config.privacyPolicy;
         document.querySelector('.sweepstakes-rules-link').href = config.sweepstakesRules;
         document.querySelector('.currency-symbol').innerHTML = details.currencySymbol;
@@ -123,6 +123,7 @@ function checkFormStatus() {
 
 async function fetchIncentives() {
     incentives = await GET(`${config.apiUrl}/incentive/stats?eventId=${details.activeEvent.short}&active=true&visible=true&populate=run`);
+    if (incentives.data.length <= 0) return document.querySelector('.incentives-div').style.display = 'none'
     let incentiveList = document.querySelector('.incentive-list');
     for (const incentive of incentives.data) {
         if (incentive.completed) continue;
@@ -274,6 +275,7 @@ function removeIncentive(id) {
 
 async function fetchPrizes() {
     prizes = await GET(`${config.apiUrl}/prize?eventId=${details.activeEvent.short}&active=true&visible=true`);
+    if (prizes.data.length <= 0) return document.querySelector('.prizes-div').style.display = 'none'
     let list = '';
     for (const prize of prizes.data) {
         //if (prize.drawn) continue;
@@ -335,7 +337,7 @@ async function donateForm() {
             <input type="hidden" name="currency_code" value="${details.currency}" />
             <input type="hidden" name="item_name" value="${donationInfo.event} Donation" />
             <input type="hidden" name="custom" value=${donationInfo.id} />
-            <input type="hidden" name="notify_url" value="${window.location.origin}/api/donation/ipn" />
+            <input type="hidden" name="notify_url" value="${config.apiUrl}/donation/ipn" />
             <input type="hidden" name="return" value="${window.location.origin}/donate/success" />
             <input type="hidden" name="cancel_return" value="${window.location.origin}/donate/error" />
         </form>

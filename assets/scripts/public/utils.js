@@ -70,6 +70,11 @@ async function generateTable(options, details) {
                     }
                     let row = tbody.insertRow();
                     row.classList.add((counter % 2 === 0) ? 'even' : 'odd');
+                    if (options.rowAttribute) {
+                        for (let i = 0; i < options.rowAttribute.length; i++) {
+                            row.setAttribute(options.rowAttribute[i].name, data.data[index][options.rowAttribute[i].data])
+                        }
+                    }
                     for (const option of options.table) {
                         if (option.textFunction) row.insertCell().innerHTML = option.textFunction(data.data[index], details);
                         else row.insertCell().innerHTML = data.data[index][option.data];

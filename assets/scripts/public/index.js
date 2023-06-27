@@ -1,12 +1,11 @@
 let match;
-let config;
 let loading;
 let routes;
 let details;
 
 const pathToRegex = path => new RegExp("^" + path.replace(/\//g, "\\/").replace(/:\w+/g, "(.+)") + "$");
 
-const router = async () => {
+const publicRouter = async () => {
 
     let error = await checkDatabase();
     if (window.location.pathname === '/databaseError' && !error) window.location.pathname = ''
@@ -35,7 +34,7 @@ const router = async () => {
 
     loading = true;
 
-    let res = await fetch(`/pages/${match.route.html}`);
+    let res = await fetch(`/pages/public/${match.route.html}`);
     let text = await res.text();
 
     let link;
@@ -44,7 +43,7 @@ const router = async () => {
     let jsPromise = new Promise(async (jsResolve) => {
         if (!match.route.javascript) return jsResolve();
         script = document.createElement('script');
-        script.setAttribute('src', `/pages/${match.route.javascript}`);
+        script.setAttribute('src', `/pages/public/${match.route.javascript}`);
         script.setAttribute('import', '')
         script.onload = () => jsResolve();
         head.appendChild(script);
@@ -56,7 +55,7 @@ const router = async () => {
         if (!match.route.stylesheet) return cssResolve();
         link = document.createElement('link');
         link.setAttribute('rel', 'stylesheet');
-        link.setAttribute('href', `/pages/${match.route.stylesheet}`);
+        link.setAttribute('href', `/pages/public/${match.route.stylesheet}`);
         link.setAttribute('import', '')
         link.onload = () => cssResolve();
         head.appendChild(link);
@@ -78,12 +77,19 @@ const router = async () => {
     loading = false;
 }
 
-window.addEventListener("popstate", router);
+window.addEventListener("popstate", publicRouter);
 
-document.addEventListener("DOMContentLoaded", async () => {
+// document.addEventListener("DOMContentLoaded", async () => {
 
-    config = await (await fetch('/config.json')).json();
-    routes = config.pages;
+async function mainRouterPageLoad(_config) {
+
+    config = _config;
+    routes = config.publicPages;
+
+    if (config.googleAnalytics && config.googleAnalytics.measurmentId) attatchAnalytics(config.googleAnalytics.measurmentId);
+    else if (config.googleAnalytics) console.warn('Google Analytics missing measurment id in the config file. Google Analytics is disabled.')
+
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) switchTheme();
 
     document.body.addEventListener("click", e => {
 
@@ -98,13 +104,13 @@ document.addEventListener("DOMContentLoaded", async () => {
             e.preventDefault();
             let href = `${e.target.href}${(urlParams.get('event')) ? "?event=" + urlParams.get('event') : ''}`;
             history.pushState(null, null, href);
-            router();
+            publicRouter();
         }
         else if (e.target.matches("[event-link]")) {
             e.preventDefault();
             let href = `${window.location.pathname}?event=${e.target.getAttribute('event')}`;
             history.pushState(null, null, href);
-            router();
+            publicRouter();
             setTimeout(() => document.querySelector('.dropdown-event-text').innerHTML = details.eventList.find(x => x.short === e.target.getAttribute('event')).name, 500);
         }
         else if (e.target.matches("[pagination-link]")) {
@@ -112,7 +118,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             let value = document.querySelector('.pagination-page-input').value;
             let href = `${window.location.pathname}?event=${urlParams.get('event')}&page=${(value > parseInt(document.querySelector('.pagination-page-total').innerHTML)) ? document.querySelector('.pagination-page-total').innerHTML : value}`;
             history.pushState(null, null, href);
-            router();
+            publicRouter();
         }
     });
 
@@ -144,18 +150,32 @@ document.addEventListener("DOMContentLoaded", async () => {
         if (!details.activeEvent) document.querySelector('header .donate-button').style.display = 'none'
     }
 
-    /* Temporary dark mode switch */
-    const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
-    toggleSwitch.addEventListener('change', switchTheme, false);
-    /* End */
+    publicRouter();
+}
+//});
 
-    router();
-});
+function attatchAnalytics(measurmentId) {
+    let script1 = document.createElement('script');
+    script1.async = true;
+    script1.src = `https://www.googletagmanager.com/gtag/js?id=${measurmentId}`;
+
+    let script2 = document.createElement('script');
+    script2.innerHTML = `
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', '${measurmentId}');
+        `
+
+    document.querySelector('head').appendChild(script1)
+    document.querySelector('head').appendChild(script2)
+}
 
 function changePath(path, fromError) {
     let href = path;
     history.pushState(null, null, href);
-    return router(fromError);
+    return publicRouter(fromError);
 }
 
 function checkDatabase() {
@@ -176,12 +196,7 @@ function checkDatabase() {
     })
 }
 
-/* Temporary dark mode switch */
-function switchTheme(e) {
-    if (e.target.checked) {
-        document.documentElement.setAttribute('data-theme', 'dark');
-    }
-    else {
-        document.documentElement.setAttribute('data-theme', 'light');
-    }
+function switchTheme() {
+    // if (document.documentElement.getAttribute('data-theme') === 'dark') document.documentElement.setAttribute('data-theme', 'light');
+    // else document.documentElement.setAttribute('data-theme', 'dark');
 }

@@ -63,8 +63,15 @@ async function load(config, details) {
             // clickFunction: (value) => {
             //     return `location.href = '/runs/${value.id}'`
             // },
-
+            rowAttribute: [{
+                name: 'runId',
+                data: '_id'
+            }]
         })
         return resolve();
     })
+}
+
+async function showCurrentRunInfo() {
+    
 }

@@ -10,6 +10,10 @@
         "donationError": "Your card was not charged. If you didn't cancel your transaction, try donating again, otherwise contact the event organizers for help.",
         "databaseError": "There was an issue connecting to the tracker's back-end database. During non-event times, the database is turned off to save on computer resources. Please try again at a later time.<br><br>If you believe this is a mistake, please contact the site administrators."
     },
+    "googleAnalytics": {
+        "enabled": false,
+        "measurmentId": ""
+    },
     "publicPages": [
         {
             "name": "Home",
@@ -66,14 +70,171 @@
             "path": "/databaseError",
             "html": "databaseError/databaseError.html",
             "javascript": "databaseError/databaseError.js"
-        }
-    ],
-    "adminPages": [
+        },
         {
             "name": "Login",
             "path": "/login",
             "html": "login/login.html",
-            "javascript": "login/login.js"
+            "javascript": "login/login.js",
+            "fullPage": true
+        }
+    ],
+    "adminPages": [
+        {
+            "name": "Home",
+            "model": "null",
+            "path": "/admin/dashboard",
+            "html": "home/home.html",
+            "javascript": "home/home.js"
+        },
+        {
+            "name": "Audit Logs",
+            "model": "auditLog",
+            "path": "/admin/dashboard/auditLogs",
+            "javascript": "auditLogs/auditLogs.js"
+        },
+        {
+            "name": "Users",
+            "model": "user",
+            "path": "/admin/dashboard/users",
+            "javascript": "users/users.js"
+        },
+        {
+            "name": "Groups",
+            "model": "group",
+            "path": "/admin/dashboard/groups",
+            "javascript": "groups/groups.js"
+        },
+        {
+            "name": "Word Filters",
+            "model": "wordFilter",
+            "path": "/admin/dashboard/wordFilters",
+            "javascript": "wordFilters/wordFilters.js"
+        },
+        {
+            "name": "Events",
+            "model": "event",
+            "path": "/admin/dashboard/events",
+            "javascript": "events/events.js"
+        },
+        {
+            "name": "Charities",
+            "model": "charity",
+            "path": "/admin/dashboard/charities",
+            "javascript": "charities/charities.js"
+        },
+        {
+            "name": "Runners",
+            "model": "runner",
+            "path": "/admin/dashboard/runners",
+            "javascript": "runners/runners.js"
+        },
+        {
+            "name": "Donors",
+            "model": "donor",
+            "path": "/admin/dashboard/donors",
+            "javascript": "donors/donors.js"
+        },
+        {
+            "name": "Email Addresses",
+            "model": "emailAddress",
+            "path": "/admin/dashboard/emailAddresses",
+            "javascript": "emailAddresses/emailAddresses.js"
+        },
+        {
+            "name": "Email Templates",
+            "model": "emailTemplate",
+            "path": "/admin/dashboard/emailTemplates",
+            "javascript": "emailTemplates/emailTemplates.js"
+        },
+        {
+            "name": "Overview",
+            "model": "",
+            "path": "/admin/dashboard/overview",
+            "javascript": "overview/overview.js"
+        },
+        {
+            "name": "Speedruns",
+            "model": "run",
+            "path": "/admin/dashboard/speedruns",
+            "javascript": "speedruns/speedruns.js"
+        },
+        {
+            "name": "Donations",
+            "model": "donation",
+            "path": "/admin/dashboard/donations",
+            "javascript": "donations/donations.js"
+        },
+        {
+            "name": "Incentives",
+            "model": "incentive",
+            "path": "/admin/dashboard/incentives",
+            "javascript": "incentives/incentives.js"
+        },
+        {
+            "name": "Blurbs",
+            "model": "blurb",
+            "path": "/admin/dashboard/blurbs",
+            "javascript": "blurbs/blurbs.js"
+        },
+        {
+            "name": "Prizes",
+            "model": "prize",
+            "path": "/admin/dashboard/prizes",
+            "javascript": "prizes/prizes.js"
+        },
+        {
+            "name": "Prize Redemptions",
+            "model": "prizeRedemption",
+            "path": "/admin/dashboard/prizeRedemptions",
+            "javascript": "prizeRedemptions/prizeRedemptions.js"
+        },
+        {
+            "name": "Change Password",
+            "model": "null",
+            "path": "/admin/dashboard/changePassword",
+            "html": "changePassword/changePassword.html",
+            "javascript": "changePassword/changePassword.js"
+        }
+    ],
+    "volunteerPages": [
+        {
+            "name": "Home",
+            "model": "null",
+            "path": "/volunteer/dashboard",
+            "html": "home/home.html",
+            "javascript": "home/home.js"
+        },
+        {
+            "name": "Donations",
+            "model": "donation",
+            "path": "/volunteer/dashboard/donations",
+            "javascript": "donations/donations.js"
+        },
+        {
+            "name": "Incentives",
+            "model": "incentive",
+            "path": "/volunteer/dashboard/incentives",
+            "javascript": "incentives/incentives.js"
+        },
+        {
+            "name": "Prizes",
+            "model": "prize",
+            "path": "/volunteer/dashboard/prizes",
+            "javascript": "prizes/prizes.js"
+        },
+        {
+            "name": "Blurbs",
+            "model": "blurb",
+            "path": "/volunteer/dashboard/blurbs",
+            "javascript": "blurbs/blurbs.js"
+        },
+        {
+            "name": "Change Password",
+            "model": "null",
+            "path": "/volunteer/dashboard/changePassword",
+            "html": "changePassword/changePassword.html",
+            "javascript": "changePassword/changePassword.js"
         }
     ]
 }

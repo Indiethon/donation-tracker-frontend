@@ -1,0 +1,66 @@
+<header class="page-header">
+    <div class="header-container left">
+        <input type="checkbox" id="navbar-toggle" class="navbar-toggle">
+        <label for="navbar-toggle" class="navbar-toggle-label">
+            <div class="navbar-icon-container">
+                <div class="navbar-toggle-icon"></div>
+            </div>
+        </label>
+        <div class="navbar-page-shadow" onClick="document.querySelector('#navbar-toggle').checked = false"></div>
+        <nav class="navbar">
+            <ul class="navbar-menu">
+                <div class="navbar-section-text">GENERAL</div>
+                <a href="/volunteer/dashboard" data-link><i class="fa-solid fa-home"></i>&nbsp;Home</a>
+                <a href="/volunteer/dashboard/donations" data-link><i class="fa-solid fa-dollar-sign"></i>&nbsp;Donations</a>
+                <a href="/volunteer/dashboard/incentives" data-link><i class="fa-solid fa-chart-line"></i>&nbsp;Incentives</a>
+                <a href="/volunteer/dashboard/prizes" data-link><i class="fa-solid fa-gift"></i>&nbsp;Prizes</a>
+                <a href="/volunteer/dashboard/blurbs" data-link><i class="fa-solid fa-newspaper"></i>&nbsp;Blurbs</a>
+                <div class="navbar-section-text">SETTINGS</div>
+                <a class="page-color-mode-button" onClick="switchTheme()"><i class="fa-solid fa-circle-half-stroke"></i>&nbsp;Toggle Page Theme</a>
+                <a class="change-password-button" href="/volunteer/dashboard/changePassword" data-link><i class="fa-solid fa-pen"></i>&nbsp;Change Password</a>
+            </ul>
+        </nav>
+        <div class="navbar-logo">
+            <a href="/"><img class="logo" src="/assets/logos/logo.png" alt="Tracker Logo"></a>
+        </div>
+    </div>
+    <div class="header-container right">
+        <a class="dashboard-button outline" href="/admin/dashboard">
+            <div class="switch-dashboard-button">Admin View</div>
+        </a>
+        <a class="dashboard-button" onClick="logout()">
+            <div class="logout-button"><i class="fa-regular fa-right-from-bracket"></i> Logout</div>
+        </a>
+    </div>
+</header>
+
+<div class="page-container">
+    <main>
+
+        <section class="content-header-section">
+            <h2 class="title"></h2>
+            <button class="dashboard-button table-button-1" onClick="setRowVisibility(1)"></button>
+            <button class="dashboard-button outline table-button-2" onClick="setRowVisibility(2)"></button>
+            <button class="dashboard-button outline table-button-3" onClick="setRowVisibility(3)"></button>
+        </section>
+
+        <section class="loading-content-section">
+            <div class="loading-content">
+                <div class="loading-animation">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section hidden">
+
+        </section>
+
+        <div class="toast-container" onClick="this.classList.remove('showToast')">
+            <div class="toast-header"></div>
+            <div class="toast-content"></div>
+        </div>
+    </main>
+</div>

@@ -4,11 +4,12 @@ input:disabled {
 }
 
 .charity-subtext {
-    font-size: 24px;
+    font-size: 22px;
     font-family: var(--charity-subtext-font-family);
     color: var(--charity-subtext-font-color);
     text-align: center;
-    margin-bottom: 24px;
+    max-width: 820px;
+    margin: 0 auto 24px auto;
 }
 
 .donate-form {
@@ -29,7 +30,7 @@ input:disabled {
 
 .input-div input {
     color: var(--input-foreground-color);
-    background-color: var(--input-hover-background-color);
+    background-color: var(--input-background-color);
     border-width: var(--input-border-thickness);
     border-style: solid;
     border-color: var(--input-border-color);
@@ -46,7 +47,7 @@ input:disabled {
 
 .input-div textarea {
     color: var(--input-foreground-color);
-    background-color: var(--input-hover-background-color);
+    background-color: var(--input-background-color);
     border-width: var(--input-border-thickness);
     border-style: solid;
     border-color: var(--input-border-color);
