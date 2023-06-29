@@ -33,12 +33,12 @@ async function load(config, details) {
                 }, {
                     name: 'User',
                     textFunction: (value) => {
-                        console.log(value)
-                        return value.user.username;
+                        if (value.userId) return value.userId;
+                        else return 'API Token'
                     }
                 }, {
                     name: 'Model',
-                    value: 'modelName',
+                    data: 'modelName',
                 },  {
                     name: 'Resource',
                     textFunction: (value) => {

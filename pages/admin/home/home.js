@@ -10,6 +10,8 @@ async function load(config, details) {
         await setPageHeaders({
             customPage: true,
             name: 'Home',
+            model: null,
+            mode: 'view',
             noBreadcrumb: true,
         });
 

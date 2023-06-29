@@ -62,8 +62,8 @@
         </div>
     </div>
     <div class="header-container right">
-        <a class="dashboard-button outline" href="/volunteer/dashboard">
-            <div class="switch-dashboard-button">Volunteer View</div>
+        <a class="dashboard-button outline switch-dashboard-button" href="/volunteer/dashboard">
+            <div>Volunteer View</div>
         </a>
         <a class="dashboard-button" onClick="logout()">
             <div class="logout-button"><i class="fa-regular fa-right-from-bracket"></i> Logout</div>
@@ -80,6 +80,7 @@
 
         <section class="content-header-section">
             <h2 class="title"></h2>
+            <a class="dashboard-button oengus-import-button hidden" href="" data-link=""><i class="fa-regular fa-upload"></i>&nbsp;Import from Oengus</a>
             <a class="dashboard-button dashboard-create-button" href="" data-link><i
                     class="fa-regular fa-plus"></i>&nbsp;Create</a>
             <button class="dashboard-button delete-all-button hidden" onClick="deleteItem('', true)"><i

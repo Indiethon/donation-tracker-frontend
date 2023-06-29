@@ -1,20 +1,25 @@
-// loadContent()
-
-// load(false, { model: 'emailTemplate', level: 'access' });
 
 async function load(config, details) {
     return new Promise(async (resolve, reject) => {
 
+        generateEventList(details.eventList)
+
         await setPageHeaders({
             customPage: true,
-            pluralName: 'Change Password',
+            name: 'Oengus Import',
+            pluralName: 'Oengus Import'
         });
 
         resolve();
     })
 }
 
-async function changePassword() {
+async function oengusImport() {
+
+    let queryString = window.location.search;
+    let urlParams = new URLSearchParams(queryString);
+    let event = urlParams.get('event')
+
 
     // Hide page content while validating.
     document.querySelector('.loading-content-section').classList.remove('hidden');
@@ -31,18 +36,18 @@ async function changePassword() {
     });
 
     let options = {};
-    options.oldPassword = document.querySelector('#current-password input').value;
-    options.newPassword = document.querySelector('#new-password input').value;
-    options.confirmPassword = document.querySelector('#confirm-password input').value;
+    options.short = document.querySelector('#short input').value;
+    options.schedule = document.querySelector('#schedule input').checked;
 
     // Send form data.
-    let save = await POST(`${config.apiUrl}/updatePassword`, options);
+    showToast('working', 'Importing runs for Oengus... Please do not reload the page.')
+    let save = await POST(`${config.apiUrl}/run/import?event=${event}`, options);
 
     console.log(save)
     // If API sent no errors.
     if (!save.error) {
-        showToast('success', 'Successfully changed password.')
-        changePath('/volunteer/dashboard')
+        showToast('success', 'Successfully imported speedruns from Oengus.')
+        changePath(`/admin/dashboard/speedruns?event=${event}`)
     }
 
     // If errors, show errors on page.

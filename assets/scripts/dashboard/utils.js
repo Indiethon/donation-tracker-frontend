@@ -7,8 +7,20 @@ let endpoint;
 async function setPageHeaders(options) {
     return new Promise(async (resolve, reject) => {
 
-        const verify = await GET(`${config.apiUrl}/verify?model=${options.model}&action=${options.ode}`);
-        if (verify.status !== 200) return location.href = '/login';
+        let mode;
+        switch (options.mode) {
+            case 'create': mode = 'full'; break;
+            case 'view': mode = 'read'; break;
+            case 'edit': mode = 'modify'; break;
+            default: mode = 'access'; break;
+        }
+        const verify = await GET(`${config.apiUrl}/verify?model=${options.model}&action=${mode}`);
+        if (verify.status === 403 && !verify.data.superuser) {
+            showToast('error', 'You are not authorized to view this resource.');
+            history.back()
+            return;
+        }
+        else if (verify.status !== 200) return location.href = '/login';
 
         document.querySelector('.content-header-section .title').innerHTML = options.pluralName;
         document.querySelector('.dashboard-create-button').classList.remove('hidden');
@@ -32,6 +44,8 @@ async function setPageHeaders(options) {
             }
 
             breadcrumb.innerHTML = html;
+
+            document.querySelector('.oengus-import-button').classList.add('hidden');
         }
 
         if (options.customPage) {
@@ -456,7 +470,9 @@ async function generateForm(options) {
     })
 }
 
-function deleteItem(id, multi) {
+async function deleteItem(id, multi) {
+    const verify = await GET(`${config.apiUrl}/verify?model=${model}&action=full`);
+    if (verify.status === 403 && !verify.data.superuser) { return showToast('error', 'You are not authorized to delete this resource.') }
     if (multi) {
         itemsToDelete = checkedItems;
         document.querySelector('.delete-popup-number-text').innerHTML = 'these items'
@@ -512,7 +528,7 @@ async function submit(options) {
     document.querySelector('.content-section').classList.add('hidden');
 
     // Clear any errors.
-    let elementList = document.querySelectorAll('.content .inputDiv');
+    let elementList = document.querySelectorAll('.content-section .inputDiv');
     [...elementList].forEach(element => {
         let el = document.querySelector(`#${element.id} .errorText`)
         try {
@@ -544,6 +560,7 @@ async function submit(options) {
     // If API sent no errors.
     if (!save.error) {
         showToast('success', `${options.name} updated successfully.`)
+        if (options.model === 'event') generateEventList(list)
         // if (options.model === 'events') refreshNav();
         // if (options.volunteer) return switchPage(`/content/pages/dashboard/volunteer/${options.model}/${options.model}.html`)
         // if (options.event !== undefined) return switchPage(`/content/pages/dashboard/admin/${options.model}/${options.model}.html?event=${options.event}`)
@@ -558,6 +575,7 @@ async function submit(options) {
         if (save.data.error === 'Invalid input.') {
             showToast('error', `Validation errors found, please resolve them.`)
             save.data.errorCodes.forEach(error => {
+                console.error(error)
                 let element = document.querySelector(`.content-section #${error.item} .errorText`);
                 element.innerHTML = error.code;
                 element.style.visibility = 'inherit';

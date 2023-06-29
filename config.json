@@ -160,6 +160,13 @@
             "javascript": "speedruns/speedruns.js"
         },
         {
+            "name": "Oengus Import",
+            "model": "run",
+            "path": "/admin/dashboard/speedruns/import",
+            "html": "speedruns/oengusImport.html",
+            "javascript": "speedruns/oengusImport.js"
+        },
+        {
             "name": "Donations",
             "model": "donation",
             "path": "/admin/dashboard/donations",

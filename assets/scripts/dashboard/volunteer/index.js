@@ -89,8 +89,10 @@ async function mainRouterPageLoad(_config, _volunteer) {
         }
     });
 
-    const verify = await GET(`${config.apiUrl}/verify?model=login&action=null`);
+    const verify = await GET(`${config.apiUrl}/verify?model=null&action=null`);
     if (verify.status !== 200) return location.href = '/login';
+
+    if (!verify.data.admin) document.querySelector('.switch-dashboard-button').remove();
 
     details = await (await fetch(`${config.apiUrl}/details`)).json();
 

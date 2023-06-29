@@ -129,9 +129,9 @@ async function mainRouterPageLoad(_config, _admin) {
         }
     });
 
-    const verify = await GET(`${config.apiUrl}/verify?model=login&action=null`);
+    const verify = await GET(`${config.apiUrl}/verify?model=null&action=view`);
     if (verify.status !== 200) return location.href = '/login';
-
+    if (!verify.data.admin) location.href = '/volunteer/dashboard'
 
     if (window.location.pathname !== '/databaseError') {
         let error = await checkDatabase();

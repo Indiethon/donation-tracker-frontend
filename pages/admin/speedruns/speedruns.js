@@ -25,6 +25,8 @@ async function load(config, details) {
         });
 
         if (!mode) {
+            document.querySelector('.oengus-import-button').setAttribute('href', `/admin/dashboard/speedruns/import?event=${event}`)
+            document.querySelector('.oengus-import-button').classList.remove('hidden');
             await generateTable({
                 model: 'run',
                 endpoint: `${config.apiUrl}/run`,

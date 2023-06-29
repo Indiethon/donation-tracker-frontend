@@ -533,7 +533,7 @@ async function submit(options) {
     document.querySelector('.content-section').classList.add('hidden');
 
     // Clear any errors.
-    let elementList = document.querySelectorAll('.content .inputDiv');
+    let elementList = document.querySelectorAll('.content-section .inputDiv');
     [...elementList].forEach(element => {
         let el = document.querySelector(`#${element.id} .errorText`)
         try {

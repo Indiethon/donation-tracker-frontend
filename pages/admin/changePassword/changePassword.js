@@ -9,8 +9,7 @@ async function load(config, details) {
 
         await setPageHeaders({
             customPage: true,
-            name: 'Change Password',
-            noBreadcrumb: true,
+            pluralName: 'Change Password',
         });
 
         resolve();
@@ -24,7 +23,7 @@ async function changePassword() {
     document.querySelector('.content-section').classList.add('hidden');
 
     // Clear any errors.
-    let elementList = document.querySelectorAll('.content .inputDiv');
+    let elementList = document.querySelectorAll('.content-section .inputDiv');
     [...elementList].forEach(element => {
         let el = document.querySelector(`#${element.id} .errorText`)
         try {
@@ -44,7 +43,8 @@ async function changePassword() {
     console.log(save)
     // If API sent no errors.
     if (!save.error) {
-        showToast('success', 'Successfully updated password.')
+        showToast('success', 'Successfully changed password.')
+        changePath('/admin/dashboard')
     }
 
     // If errors, show errors on page.
