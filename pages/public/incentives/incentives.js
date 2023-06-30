@@ -11,7 +11,7 @@ async function load(config, details) {
 
         await generateTable({
             event: urlParams.get('event'),
-            url: `${config.apiUrl}/incentive/stats?eventId=${urlParams.get('event')}&populate=run`,
+            url: `${config.apiUrl}/incentive/stats?eventId=${urlParams.get('event')}&active=true&visible=true&populate=run`,
             table: [{
                 name: 'Name',
                 textFunction: (value) => {
@@ -61,9 +61,6 @@ async function load(config, details) {
                     return 'No';
                 }
             }],
-            rowFunction: (incentive) => {
-                return incentive.visible
-            }
         })
         return resolve();
     })

@@ -10,7 +10,7 @@ async function load(config, details) {
 
         await generateTable({
             event: urlParams.get('event'),
-            url: `${config.apiUrl}/prize?eventId=${urlParams.get('event')}&populate=donor`,
+            url: `${config.apiUrl}/prize?eventId=${urlParams.get('event')}&visible=true&populate=donor`,
             table: [{
                 name: 'Name',
                 data: 'name',
@@ -64,9 +64,6 @@ async function load(config, details) {
             // clickFunction: (value) => {
             //     return `location.href = '/prizes/${event}/${value.id}'`
             // },
-            rowFunction: (prize) => {
-                return prize.visible
-            },
         })
         return resolve();
     })

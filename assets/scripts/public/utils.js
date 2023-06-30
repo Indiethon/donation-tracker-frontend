@@ -59,7 +59,7 @@ async function generateTable(options, details) {
                 let tbody = document.createElement('tbody');
                 let counter = 0;
                 if (data.data.length < 1) return resolve(tbody);
-                if (options.dateMode) await createDateRow(tbody, data.data[0]);
+                if (options.dateMode) await createDateRow(tbody, data.data[0])
                 for (let index = 0; index < data.data.length; index++) {
                     let create = (options.rowFunction !== undefined) ? await options.rowFunction(data.data[index]) : true;
                     if (!create) continue;
@@ -145,7 +145,7 @@ async function generateTable(options, details) {
 }
 
 async function generateSubTable(options, tableData, subTableData) {
-    return new Promise(async (resolve, reject) => {
+    return new Promise(async (subRes, reject) => {
         let table = document.createElement('table');
         let thead = document.createElement('thead');
         let tbody = document.createElement('tbody');
@@ -174,7 +174,7 @@ async function generateSubTable(options, tableData, subTableData) {
             resolve();
         })
 
-        resolve(table);
+        subRes(table);
     });
 }
 
