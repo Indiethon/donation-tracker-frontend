@@ -139,6 +139,7 @@ async function createTable() {
                 }
             }]
         }, true)
+        setRowVisibility(1)
         resolve();
     })
 }
