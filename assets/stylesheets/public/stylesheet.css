@@ -804,7 +804,6 @@ footer a:hover {
         text-align: center;
         width: 120px;
     }
-
 }
 
 @media screen and (max-width: 800px) {
@@ -861,6 +860,14 @@ footer a:hover {
 
     .links {
         flex-wrap: wrap
+    }
+
+    .table-section {
+        overflow-x: scroll;
+    }
+
+    .table {
+        overflow-x: scroll;
     }
 }
 
