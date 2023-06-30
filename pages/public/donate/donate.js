@@ -44,7 +44,9 @@ async function load() {
             console.log('api error')
             let newData = await GET(`${config.apiUrl}/details`);
             details = newData;
-            console.log(details)
+            console.log(!details)
+            console.log(!details.activeEvent)
+            console.log(!details.activeEvent.charity)
         }
 
         document.querySelector('header h1').innerHTML = `Donate to ${details.activeEvent.charity.name}`;

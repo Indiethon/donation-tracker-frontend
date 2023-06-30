@@ -84,7 +84,7 @@ async function load(config, details) {
                 populate: ['run'],
                 datalist: {
                     runDatalist: {
-                        endpoint: `${config.apiUrl}/run?event=${event}`,
+                        endpoint: `${config.apiUrl}/run?eventId=${event}`,
                         textFunction: (value) => {
                             return value.game + ' ' + value.category;
                         },
