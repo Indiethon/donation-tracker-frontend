@@ -229,7 +229,7 @@ function addIncentive() {
     }
     if (document.querySelector('.incentive-list-element.selected').hasAttribute('bidwar')) {
         let optionId = document.querySelector('.incentive-options-container .incentive-option-checkbox-div.selected').getAttribute('optionId');
-        arrayData.option = document.querySelector('.incentive-option-checkbox-div.selected .incentive-option-checkbox-text').innerHTML;
+        arrayData.option = optionId;
         if (optionId === 'customOption') arrayData.userOption = arrayData.option = document.querySelector('.incentive-custom-option-input-container input').value;
     }
     let index = selectedIncentives.findIndex(x => x.id === document.querySelector('.incentive-list-element.selected').getAttribute('incentiveId'));

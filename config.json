@@ -11,8 +11,8 @@
         "databaseError": "There was an issue connecting to the tracker's back-end database. During non-event times, the database is turned off to save on computer resources. Please try again at a later time.<br><br>If you believe this is a mistake, please contact the site administrators."
     },
     "googleAnalytics": {
-        "enabled": false,
-        "measurmentId": ""
+        "enabled": true,
+        "measurmentId": "G-YBJPG5MEK0"
     },
     "publicPages": [
         {
