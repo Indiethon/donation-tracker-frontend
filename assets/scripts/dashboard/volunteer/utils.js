@@ -212,7 +212,7 @@ async function setIncentiveActiveStatus(id, status) {
     document.querySelector(`tr[elementId="${id}"`).setAttribute('rowattr', `${(status) ? 'false' : 'true'}`)
     document.querySelector(`.subTableRow[dataid="${id}"`).classList.remove('active');
     await POST(`${config.apiUrl}/incentive?_id=${id}`, {
-        active: status
+        active: status,
     }),
     setRowVisibility(null, true);
 }

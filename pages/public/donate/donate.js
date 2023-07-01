@@ -132,11 +132,11 @@ function checkFormStatus() {
 }
 
 async function fetchIncentives() {
-    incentives = await GET(`${config.apiUrl}/incentive/stats?eventId=${details.activeEvent.short}&active=true&visible=true&populate=run`);
+    incentives = await GET(`${config.apiUrl}/incentive/stats?eventId=${details.activeEvent.short}&visible=true&populate=run`);
     if (incentives.data.length <= 0) return document.querySelector('.incentives-div').style.display = 'none'
     let incentiveList = document.querySelector('.incentive-list');
     for (const incentive of incentives.data) {
-        if (incentive.completed) continue;
+        if (incentive.completed || !incentive.active) continue;
         let div = `
         <div class="incentive-list-element" incentiveId="${incentive._id}" ${(incentive.type === 'bidwar' ? 'bidwar' : '')} onClick="showIncentiveInfo(this)">
             <div class="incentive-list-game">${incentive.run.game}</div>
